@@ -1,0 +1,118 @@
+// Form Styling 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// Form Styling 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+.wpcf7 {
+  max-width: 450px;
+  margin: 30px auto !important;
+  * {
+    font-size: 16px;
+  }
+  .uk-form {
+    .uk-grid-small>* {
+      padding-left: 15px;
+    }
+    select,
+    input:not([type]),
+    input[type="text"],
+    input[type="password"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="month"],
+    input[type="time"],
+    input[type="week"],
+    input[type="number"],
+    input[type="email"],
+    input[type="url"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="color"] {
+      height: 33px;
+      padding: 0 9px 3px;
+    }
+    textarea {
+      padding-left: 9px;
+      padding-right: 9px;
+      height: 129px;
+    }
+    input,
+    textarea {
+      width: 100%;
+      &:focus {
+        background: rgba(118, 11, 24, 0.06);
+        border: 1px solid @primary-color;
+      }
+    }
+    .g-recaptcha {
+      margin-top: -15px;
+    } 
+    input[type="submit"] {
+      width: 100%;
+      background: @primary-color;
+      border: none;
+      color: #fff;
+      font-weight: 600;
+      padding: 7px;
+      text-transform: uppercase;
+      letter-spacing: 0.03rem;
+      font-size: 15px;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        background: @primary-color;
+      }
+    }
+    textarea+span.wpcf7-not-valid-tip {
+      top: auto;
+      bottom: -107px;
+    }
+    .placeholder {}
+     ::-webkit-input-placeholder {
+      .placeholder()
+    }
+     ::-moz-placeholder {
+      .placeholder()
+    }
+     :-ms-input-placeholder {
+      .placeholder()
+    }
+     :-moz-placeholder {
+      .placeholder()
+    }
+    span.wpcf7-form-control-wrap {
+      position: relative;
+    }
+    span.wpcf7-not-valid-tip {
+      color: #a94442;
+      font-size: 11px;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: right;
+      position: absolute;
+      top: -8px;
+      right: 7px;
+    }
+  }
+  div.wpcf7-response-output {
+    line-height: 130%;
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 11px !important;
+    margin: 0;
+    max-width: 550px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  div.wpcf7-validation-errors {
+    background-color: #fcf8e3;
+    color: #8a6d3b;
+    border-color: #faf2cc;
+  }
+  div.wpcf7-mail-sent-ok {
+    background-color: #dff0d8;
+    border-color: #d0e9c6;
+    color: #3c763d;
+  }
+}

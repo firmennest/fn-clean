@@ -1,0 +1,56 @@
+// Visual Composer
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+.fn-content {
+  >div.vc_row {
+    &:first-child {
+      padding-bottom: @utility-margin-large;
+    }
+    &:not(:first-child) {
+      padding-bottom: @utility-margin-large;
+    }
+    &:last-child {
+      padding-bottom: @utility-margin-large;
+    }
+    & .vc_column-inner {
+      padding-top: 0px !important;
+    }
+  }
+  & .wpb_wrapper {
+    >div {
+      &:last-child {
+        margin-bottom: 0px !important;
+      }
+    }
+  }
+  & ul {
+    .uk-list();
+  }
+}
+
+.fn-contact {
+  >div.vc_row {
+    &:first-child {
+      padding-bottom: 0px;
+    }
+    &:not(:first-child) {
+      padding-bottom: @utility-margin-large;
+    }
+    &:last-child {
+      padding-bottom: @utility-margin-large;
+    }
+    & .vc_column-inner {
+      padding-top: 0px !important;
+    }
+  }
+  & .wpb_wrapper {
+    >div {
+      &:last-child {
+        margin-bottom: 0px !important;
+      }
+    }
+  }
+  & ul {
+    .uk-list();
+  }
+}
