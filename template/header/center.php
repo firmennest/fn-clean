@@ -27,7 +27,7 @@ $imageSrc = $imageAttachment[0];
                         </ul>
                         <ul class="uk-list main-menu uk-margin-bottom-remove uk-visible-small">
                             <li>
-                               <a href="#mobilemenuoff" id="offcanvaslink" data-uk-offcanvas><i class="uk-icon-bars"></i> Menü</a>
+                               <a href="#menu" id="offcanvaslink" data-uk-offcanvas><i class="uk-icon-bars"></i> Menü</a>
                            </li>
                         </ul>
                     </nav>
