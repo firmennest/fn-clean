@@ -8,6 +8,7 @@
     $xing = read_option('option-xing');
     $linkedin = read_option('option-linkedin');
     $gplus = read_option('option-googleplus');
+    $pinterest = read_option('option-pinterest');
   ?>
   
   <div class="uk-container uk-container-center">
@@ -96,6 +97,17 @@
           <li>
             <a target="_blank" href="<?php echo $gplus; ?>">
               <i class="uk-icon-google-plus"></i>
+            </a>
+          </li>
+          <?php
+            }
+          ?>
+          <?php
+            if(!empty($pinterest)){
+          ?>
+          <li>
+            <a target="_blank" href="<?php echo $pinterest; ?>">
+              <i class="uk-icon-pinterest"></i>
             </a>
           </li>
           <?php
