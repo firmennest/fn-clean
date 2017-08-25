@@ -12,8 +12,6 @@
   <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" />
 
   <?php wp_head(); ?>
-  
-  <?php $analytics = read_option('option-seo_analytics')?>
     
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -21,7 +19,7 @@
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', '$analytics', 'auto');
+    ga('create', 'UA-XXXXXXXX', 'auto');
     ga('set', 'anonymizeIp', true);
     ga('send', 'pageview');
 
