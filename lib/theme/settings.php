@@ -131,6 +131,12 @@ function fn_theme_options() {
       'type' => 'text',
       'desc' => ''
     ) );
+    $tab2->createOption( array(
+      'name' => 'Pinterest',
+      'id' => 'option-pinterest',
+      'type' => 'text',
+      'desc' => ''
+    ) );
   
     // SEO
     $tab3->createOption( array(
@@ -150,12 +156,6 @@ function fn_theme_options() {
       'id' => 'option-seo_keywords',
       'type' => 'text',
       'desc' => 'Allgemeine Keywords für die Webseite.'
-    ) );
-    $tab3->createOption( array(
-      'name' => 'Google Analytics',
-      'id' => 'option-seo_analytics',
-      'type' => 'text',
-      'desc' => 'Google Analytics Tracking Code'
     ) );
   
     // Blog
