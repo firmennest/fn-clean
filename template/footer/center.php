@@ -8,12 +8,6 @@
     $phone = read_option('option-tel');
     $fax = read_option('option-fax');
     $mail = read_option('option-mail');
-    $fb = read_option('option-facebook');
-    $instagram = read_option('option-instagram');
-    $twitter = read_option('option-twitter');
-    $xing = read_option('option-xing');
-    $linkedin = read_option('option-linkedin');
-    $gplus = read_option('option-googleplus');
   ?>
 
   <div class="uk-container uk-container-center">
