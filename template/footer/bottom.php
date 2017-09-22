@@ -17,7 +17,7 @@
       <div class="uk-width-small-1-1 uk-width-medium-1-2 copyright">
 
         <a href="<?php bloginfo('url') ?>">
-          &copy; <?php echo date('Y'); echo ' '.read_option('option_name'); ?>
+          &copy; <?php echo date('Y'); echo ' '.read_option('option-name'); ?>
         </a>
 
       </div>
