@@ -1,13 +1,14 @@
 // Header & Menus 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #header-wrapper {
-  .uk-hidden-small {
-    ul {
+  ul {
+    &.uk-hidden-small {
       >li {
         display: inline-block;
         &:not(:last-child) {
           margin-right: 15px;
         }
+        &.current-menu-item, &:hover { }
       }
     }
   }
