@@ -60,6 +60,20 @@ a {
 // Buttons 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+a.uk-button {
+  color: @w;
+  background: @primary-color;
+  transition: @base-transition;
+  &.fn-button-line {
+    background: none;
+    border: 1px solid @primary-color;
+    color: @primary-color;
+    &:hover {
+      background: @primary-color;
+      color: @w;
+    }
+  }
+}
 
 // Classes 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
