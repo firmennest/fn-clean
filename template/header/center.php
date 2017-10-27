@@ -25,11 +25,11 @@ $imageSrc = $imageAttachment[0];
                         <ul class="uk-list main-menu uk-margin-bottom-remove uk-hidden-small">
                             <?php wp_nav_menu( array('theme_location' => 'main', 'container' => false , 'items_wrap' => '%3$s', )); ?>
                         </ul>
-                        <ul class="uk-list main-menu uk-margin-bottom-remove uk-visible-small">
+                        <ul class="uk-list main-menu-mobile uk-margin-bottom-remove uk-visible-small">
                             <li>
-                               <a href="#menu" id="offcanvaslink" data-uk-offcanvas><i class="uk-icon-bars"></i> Menü</a>
-                           </li>
-                        </ul>
+                               <a href="#menu" id="offcanvas" data-uk-offcanvas><i class="uk-icon-bars"></i></a> 
+                           </li> 
+                        </ul> 
                     </nav>
                 </div>
 
@@ -41,14 +41,14 @@ $imageSrc = $imageAttachment[0];
 
     <?php // Offcanvas Menu ?>
 
-        <div id="menu" class="uk-offcanvas">
-            <div class="uk-offcanvas-bar">
-                <nav>
-                    <ul class="uk-list main-menu-mobile">
-                        <?php wp_nav_menu( array('theme_location' => 'main', 'container' => false , 'items_wrap' => '%3$s', )); ?>
-                    </ul>
-                </nav>
-            </div>
+    <div id="menu" class="uk-offcanvas">
+        <div class="uk-offcanvas-bar">
+            <nav>
+                <ul class="uk-list main-menu-mobile uk-margin-top-large ">
+                    <?php wp_nav_menu( array('theme_location' => 'main', 'container' => false , 'items_wrap' => '%3$s', )); ?>
+                </ul>
+            </nav>
         </div>
+    </div>
 
 </div>
