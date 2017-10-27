@@ -3,6 +3,12 @@ firmennest base template
 
 # Version History
 
+1.0.7 Oct 27, 2017
+added intro-image call in template/header/bottom.php
+added intro-image styles in assets/theme/less/theme/singular.less
+mobile menu class changes in template/header/center.php
+added hover and mobile menu styles in assets/theme/less/theme/header.less
+
 1.0.6 Sep 22, 2017
 added version history in README.md
 fixed option-name id in template/footer/footer-bottom.php
@@ -27,3 +33,4 @@ offcanvas id fix in header.php
 analytics issue fixed in header.php
 
 1.0.0 - Jul 1, 2017
+initial commit
