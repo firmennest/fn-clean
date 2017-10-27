@@ -2,13 +2,73 @@
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #header-wrapper {
   ul {
-    &.uk-hidden-small {
-      >li {
+    &.main-menu {
+      > li {
         display: inline-block;
+        position: relative;
         &:not(:last-child) {
           margin-right: 15px;
         }
-        &.current-menu-item, &:hover { }
+        .sub-menu {
+          display: none;
+        }
+        &.current-menu-item,
+        &:hover {
+        }
+        &:hover {
+          .sub-menu { 
+            display: block;
+            padding: 15px 0 0 0;
+            position: absolute;
+            left: -15px;
+            white-space: nowrap;
+            z-index: 10;
+            text-align: left;
+            > li {
+              border-bottom: 1px solid fade(@w, 25%);
+              &:last-child {
+                border: none;
+              }
+
+              > a {
+                display: block;
+                color: @w !important;
+                border: none;
+                padding: 10px 30px 10px 15px;
+              }
+              &:hover {
+                background-color: fade(@w, 20%);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.main-menu-mobile {
+    #offcanvas {
+      color: @txt;
+      padding: 0;
+      font-size: 30px;
+    }
+    > li {
+      &:not(:last-child) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        ul {
+          padding: 0;
+          background: rgba(0, 0, 0, 0.1);
+          > li:not(:last-child) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            a {
+              color: rgba(255, 255, 255, 0.8);
+            }
+          }
+        }
+      }
+      a {
+        color: @w;
+        display: block;
+        padding: 10px 15px;
       }
     }
   }
