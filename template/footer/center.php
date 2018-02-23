@@ -63,7 +63,7 @@
       
       <div class="uk-width-small-1-1 uk-width-medium-1-4">
         <ul class="uk-list footer-menu">
-          <?php wp_nav_menu( array('theme_location' => 'footer', 'container' => false , 'items_wrap' => '%3$s', )); ?>
+          <?php wp_nav_menu( array( 'fallback_cb' => 'fn_menu_fallback', 'menu' => 'menu', 'container' => false, 'theme_location'=>'footer', 'items_wrap' => '%3$s' ) ); ?>
         </ul>
       </div>
 
