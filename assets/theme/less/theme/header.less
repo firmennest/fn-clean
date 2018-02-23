@@ -1,4 +1,4 @@
-// Header & Menus 
+// Header & Menus
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #header-wrapper {
   ul {
@@ -13,12 +13,11 @@
           display: none;
         }
         &.current-menu-item,
+        &:hover {}
         &:hover {
-        }
-        &:hover {
-          .sub-menu { 
+          .sub-menu {
             display: block;
-            padding: 15px 0 0 0;
+            padding: 15px 0 0;
             position: absolute;
             left: -15px;
             white-space: nowrap;
@@ -29,7 +28,6 @@
               &:last-child {
                 border: none;
               }
-
               > a {
                 display: block;
                 color: @w !important;
@@ -45,31 +43,40 @@
       }
     }
   }
-  &.main-menu-mobile {
-    #offcanvas {
-      color: @txt;
-      padding: 0;
-      font-size: 30px;
-    }
-    > li {
-      &:not(:last-child) {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        ul {
-          padding: 0;
-          background: rgba(0, 0, 0, 0.1);
-          > li:not(:last-child) {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            a {
-              color: rgba(255, 255, 255, 0.8);
+}
+
+// Mobile Menus
+.uk-offcanvas {
+  .uk-offcanvas-bar {
+    background: @darkgrey;
+    ul.main-menu-mobile {
+      > li {
+        &:not(:last-child) {
+          border-bottom: 1px solid fade(@w,10%);
+          ul {
+            padding: 0;
+            background: fade(@w,10%);
+            > li:not(:last-child) {
+              border-bottom: 1px solid fade(@black,10%);
+              a {
+                color: fade(@w,80%);
+              }
             }
           }
         }
+        a {
+          color: @w;
+          display: block;
+          padding: 10px;
+        }
       }
-      a {
-        color: @w;
-        display: block;
-        padding: 10px 15px;
-      }
+    }
+    a.uk-close {
+      position: absolute;
+      top: 16px;
+      right: 15px;
+      font-size: 20px;
+      color: @w;
     }
   }
 }
