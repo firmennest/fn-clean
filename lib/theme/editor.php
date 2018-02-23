@@ -16,49 +16,44 @@ function my_mce_before_init_insert_formats( $init_array ) {
   $style_formats = array(  
     
     // Each array child is a format with it's own settings
-    array(  
-      'title' => 'Erste Überschrift',  
-      'inline' => 'span',  
+    array(
+      'title' => 'Erste Überschrift',
+      'selector' => 'p,h2,h3,h4,h5,h6',
       'classes' => 'uk-h1',
-      'wrapper' => true,
-    ),array(  
+    ),
+    array(
       'title' => 'Zweite Überschrift',
-      'inline' => 'span',  
+      'selector' => 'p,h1,h3,h4,h5,h6',
       'classes' => 'uk-h2',
-      'wrapper' => true,
-
-    ),array(  
-      'title' => 'Dritte Überschrift',  
-      'inline' => 'span',  
+    ),
+    array(
+      'title' => 'Dritte Überschrift',
+      'selector' => 'p,h1,h2,h4,h5,h6',
       'classes' => 'uk-h3',
-      'wrapper' => true,
-
-    ),array(  
-      'title' => 'Vierte Überschrift',  
-      'inline' => 'span',  
+    ),
+    array(
+      'title' => 'Vierte Überschrift',
+      'selector' => 'p,h1,h2,h3,h5,h6',
       'classes' => 'uk-h4',
-      'wrapper' => true,
-
-    ),array(  
-      'title' => 'Fünfte Überschrift',  
-      'inline' => 'span',  
+    ),
+    array(
+      'title' => 'Fünfte Überschrift',
+      'selector' => 'p,h1,h2,h3,h4,h6',
       'classes' => 'uk-h5',
-      'wrapper' => true,
-
-    ),array(  
-      'title' => 'Sechste Überschrift',  
-      'inline' => 'span',  
+    ),
+    array(
+      'title' => 'Sechste Überschrift',
+      'selector' => 'p,h1,h2,h3,h4,h5',
       'classes' => 'uk-h6',
-      'wrapper' => true,
-
-    ),array(  
+    ),
+    array(
       'title' => 'Button',
       'inline' => 'a',
       'classes' => 'uk-button',
       'selector' => 'a',
     ),
-    array(  
-      'title' => 'Button',
+    array(
+      'title' => 'Outline-Button',
       'inline' => 'a',
       'classes' => 'uk-button fn-button-line',
       'selector' => 'a',
