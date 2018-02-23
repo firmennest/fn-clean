@@ -6,8 +6,8 @@
 function fn_theme_menus() {
   register_nav_menus(
     array(
-      'main' => __( 'Main Menu' ),
-      'footer' => __( 'Footer Menu' ),
+      'main' => __( 'Hauptmenü' ),
+      'footer' => __( 'Fußzeile' ),
     )
   );
 }
