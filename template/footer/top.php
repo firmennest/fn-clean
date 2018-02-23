@@ -3,3 +3,5 @@
 		<?php dynamic_sidebar( 'fn-footer-top' ); ?>
 	</div>
 <?php endif; ?>
+
+<footer>
