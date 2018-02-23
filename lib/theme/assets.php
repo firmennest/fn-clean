@@ -6,7 +6,7 @@ function add_theme_css() {
     $theme_name = get_template();
     $directory = "wp-content/themes/" . $theme_name . "/assets/theme/css/";
 
-    //get all image files with a .js extension.
+    //get all image files with a .css extension.
     $files = glob($directory . "*.css");
     sort($files);
 
