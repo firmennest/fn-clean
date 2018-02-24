@@ -1,0 +1,76 @@
+body {
+  margin: 30px;
+}
+
+// Variables
+@import "variables.less";
+
+// Base
+@import "base.less";
+
+// Editor Typo
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: @base-body-font-family;
+  font-size: @base-body-font-size;
+  font-weight: @base-body-font-weight;
+  line-height: @base-body-line-height;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  clear: both;
+  line-height: @base-heading-line-height;
+  margin: 0 0 @base-margin-vertical 0;
+  padding: 0;
+  
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+  padding-top: 0;
+}
+
+h1 {
+  .uk-h1()
+}
+
+h2 {
+  .uk-h2()
+}
+
+h3 {
+  .uk-h3()
+}
+
+h4 {
+  .uk-h4()
+}
+
+h5 {
+  .uk-h5()
+}
+
+h6 {
+  .uk-h6()
+}
+
+p {
+  margin: @base-margin-vertical 0;
+  padding: 0;
+}
+
+// Wordpress
+@import "wordpress.less";
