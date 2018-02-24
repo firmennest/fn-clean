@@ -1,5 +1,9 @@
 <?php
 
+// Editor Styles
+
+add_editor_style( array( 'assets/theme/css/editor.css' ) );
+
 // Custom Editor Classes & Settings
 
 function wpb_mce_buttons_2($buttons) {
