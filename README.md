@@ -3,6 +3,28 @@ firmennest base template
 
 # Version History
 
+__2.0.0 Feb 24, 2018__<br>
+- added unzip.php to lib to unzip the titan-framework for workflow-speedup
+- removed unused php-variables in singular.php
+- removed unused custom header function in lib/system/administration.php
+- removed span-use for headline-formats in lib/theme/editor.php
+- added fallback-menu with create-menu link in lib/system/menus.php
+- typo update in lib/system/menus.php
+- fixed mobile styles in assets/theme/less/theme/header.less
+- fixed offcanvas, added close-button, added fa5, added fallback-menu in template/header/center.php
+- changed logo-usage and added fallback-menu in template/footer/center.php
+- set overall box-sizing to border-box in assets/theme/less/theme/base.less
+- added uikit variables in assets/theme/less/theme/variables.less
+- changed focus-background to primary-color in assets/theme/less/theme/forms.less
+- added opening footer tag in template/footer/top.php
+- added closing footer tag in template/footer/bottom.php
+- added support for custom editor styles lib/theme/editor.php
+- added assets/theme/less/theme/editor.less
+- added assets/theme/css/editor.css and map
+- added fa5 fonts in assets/theme/fonts/
+- added assets/theme/css/fontawesome-all.min.css
+- updated main.css with latest less-changes
+
 __1.0.7 Oct 27, 2017__<br>
 - added intro-image call in template/header/bottom.php
 - added intro-image styles in assets/theme/less/theme/singular.less
