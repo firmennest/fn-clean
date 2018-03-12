@@ -34,13 +34,13 @@
             <?php echo $city; ?>
           </li>
           <li>
-            <i class="uk-icon-phone"></i> <?php echo $phone; ?>
+            <i class="fal fa-phone"></i> <?php echo $phone; ?>
           </li>
           <li>
-            <i class="uk-icon-fax"></i> <?php echo $fax; ?>
+            <i class="fal fa-fax"></i> <?php echo $fax; ?>
           </li>
           <li>
-            <i class="uk-icon-envelope"></i> <a href="mailto:<?php echo $mail; ?>"><?php echo $mail; ?></a>
+            <i class="fal fa-envelope"></i> <a href="mailto:<?php echo $mail; ?>"><?php echo $mail; ?></a>
           </li>
         </ul>
 
