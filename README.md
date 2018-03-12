@@ -3,7 +3,13 @@ firmennest base template
 
 # Version History
 
-__2.0.0 Feb 24, 2018__<br>
+__1.2.1 Mar 12, 2018__<br>
+- added theme-settings output-shortcodes in lib/shortcode.php #2
+- changed icons to fa5 in template/footer/center.php #5
+- fixed typos in misc. template files #3
+- changed css-request in lib/theme/assets.php #4
+
+__1.2.0 Feb 24, 2018__<br>
 - added unzip.php to lib to unzip the titan-framework for workflow-speedup
 - removed unused php-variables in singular.php
 - removed unused custom header function in lib/system/administration.php
