@@ -5,9 +5,6 @@
 /** Assets **/
 require_once('assets.php');
 
-/** Options **/
-require_once('settings.php');
-
 /** Custom Post Types **/
 require_once('posttypes.php');
 
