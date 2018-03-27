@@ -5,7 +5,7 @@ firmennest base template
 
 __1.2.2 Mar 27, 2018__<br>
 - removed titan-framework in order to use acf-option-pages
-- added option-pages calls in lib/system/administration.php
+- added option-pages & -fields calls in lib/system/administration.php
 - changed titan-framework-calls to acf option-field-calls in various files
 - added image-sizes for the new options-pages in lib/system/medien.php
 
