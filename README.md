@@ -3,6 +3,12 @@ firmennest base template
 
 # Version History
 
+__1.2.2 Mar 27, 2018__<br>
+- removed titan-framework in order to use acf-option-pages
+- added option-pages calls in lib/system/administration.php
+- changed titan-framework-calls to acf option-field-calls in various files
+- added image-sizes for the new options-pages in lib/system/medien.php
+
 __1.2.1 Mar 12, 2018__<br>
 - added theme-settings output-shortcodes in lib/shortcode.php #2
 - changed icons to fa5 in template/footer/center.php #5
