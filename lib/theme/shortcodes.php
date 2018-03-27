@@ -9,7 +9,7 @@ function fn_shortcode()
 
   <p>Shortcode Inhalte</p>
 
-  <?php 
+  <?php
   return ob_get_clean();
 }
 
@@ -20,7 +20,7 @@ function fn_option_name()
 {
   ob_start();
 
-  echo read_option('option-name');
+  echo the_field('company_name', 'option');
 
   return ob_get_clean();
 }
@@ -30,7 +30,7 @@ function fn_option_strasse()
 {
   ob_start();
 
-  echo read_option('option-street');
+  echo the_field('address_street', 'option');
 
   return ob_get_clean();
 }
@@ -40,7 +40,10 @@ function fn_option_city()
 {
   ob_start();
 
-  echo read_option('option-city');
+  $postal = get_field('address_postal', 'option');
+  $city = get_field('address_city', 'option');
+
+  echo $postal . ' ' . $city;
 
   return ob_get_clean();
 }
@@ -50,7 +53,7 @@ function fn_option_tel()
 {
   ob_start();
 
-  echo read_option('option-tel');
+  echo get_field('company_phone', 'option');
 
   return ob_get_clean();
 }
@@ -60,7 +63,7 @@ function fn_option_fax()
 {
   ob_start();
 
-  echo read_option('option-fax');
+  echo get_field('company_fax', 'option');
 
   return ob_get_clean();
 }
@@ -70,7 +73,7 @@ function fn_option_mail()
 {
   ob_start();
 
-  echo read_option('option-mail');
+  echo get_field('company_mail', 'option');
 
   return ob_get_clean();
 }

@@ -1,7 +1,7 @@
 <?php
-  $logo = read_option('option-logo');
-  $imageAttachment = wp_get_attachment_image_src( $logo , '' );
-  $imageSrc = $imageAttachment[0];
+  $logo = get_field('company_logo', 'option');
+  $logo_src = wp_get_attachment_image_src( $logo , '' );
+  $logo_url = $logo_src[0];
 ?>
 
 <div class="uk-width-1-1" id="header-wrapper">
@@ -10,7 +10,7 @@
       <div class="uk-grid">
         <div class="uk-width-small-1-2 uk-width-medium-1-4">
           <a class="logo" href="<?php bloginfo('url'); ?>">
-            <img src="<?php echo $imageSrc; ?>" alt="">
+            <img src="<?php echo $logo_url; ?>" alt="">
           </a>
         </div>
         <div class="uk-width-small-1-2 uk-width-medium-3-4 uk-text-right">

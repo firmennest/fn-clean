@@ -7,10 +7,10 @@
       <!-- Single Article START -->
       <article class="post">
 
-        <?php 
+        <?php
        if ( have_posts() ) {
         while ( have_posts() ) {
-            the_post(); 
+            the_post();
             //
             ?>
 
@@ -35,12 +35,12 @@
               <img alt="<?php the_title_attribute(); ?>" src="<?php the_post_thumbnail_url('blog-large'); ?>"/>
             <?php else : ?>
             <?php
-                  $blog = read_option('option_blog');
-                  $bloglarge_url = wp_get_attachment_image_src( $blog , 'blog-large' );
-                  $bloglarge = $bloglarge_url[0];
-                ?>
-              <img alt="<?php the_title_attribute(); ?>" src="<?php echo $bloglarge; ?>"/>
-              <?php endif; ?>
+              $blog_thumb = get_field('blog_std_img', 'option');
+              $blog_src = wp_get_attachment_image_src( $blog_thumb , 'medium' );
+              $blog_url = $blog_src[0];
+            ?>
+            <img alt="<?php the_title_attribute(); ?>" src="<?php echo $blog_url; ?>"/>
+            <?php endif; ?>
           </div>
           <!-- Article Images END -->
 
@@ -49,7 +49,7 @@
               the_content();
             ?>
           </div>
-          
+
           <div class="article-footer">
             <?php the_tags( '<span class="tags">',', ', '</span>' ); ?>
           </div>
@@ -69,7 +69,7 @@
     <!-- Sidebar START -->
     <div class="uk-width-small-1-1 uk-width-medium-3-10 sidebar-wrapper">
       <div class="sidebar">
-        
+
         <!-- Sidebar-Item START -->
         <div class="sidebar-item search">
           <?php get_search_form(); ?>

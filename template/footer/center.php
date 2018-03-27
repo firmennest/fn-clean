@@ -1,15 +1,17 @@
 <div class="uk-width-1-1" id="footer-center-wrapper">
 
   <?php
-    $logo = read_option('option-logo');
-    $imageAttachment = wp_get_attachment_image_src( $logo , '' );
-    $imageSrc = $imageAttachment[0];
-    $name = read_option('option-name');
-    $street = read_option('option-street');
-    $city = read_option('option-city');
-    $phone = read_option('option-tel');
-    $fax = read_option('option-fax');
-    $mail = read_option('option-mail');
+    $logo = get_field('company_logo', 'option');
+    $logo_src = wp_get_attachment_image_src( $logo , '' );
+    $logo_url = $logo_src[0];
+    $name = get_field('company_name', 'option');
+    $street = get_field('address_street', 'option');
+    $postal = get_field('address_postal', 'option');
+    $city = get_field('address_city', 'option');
+    $country = get_field('address_country', 'option');
+    $mail = get_field('company_mail', 'option');
+    $phone = get_field('company_phone', 'option');
+    $fax = get_field('company_fax', 'option');
   ?>
 
   <div class="uk-container uk-container-center">
@@ -17,7 +19,7 @@
 
       <div class="uk-width-small-1-1 uk-width-medium-1-4">
         <a class="logo" href="<?php bloginfo('url'); ?>">
-          <img src="<?php echo $imageSrc; ?>" alt="">
+          <img src="<?php echo $logo_url; ?>" alt="">
         </a>
       </div>
 
@@ -31,7 +33,7 @@
             <?php echo $street; ?>
           </li>
           <li>
-            <?php echo $city; ?>
+            <?php echo $postal .' '. $city; ?>
           </li>
           <li>
             <i class="fal fa-phone"></i> <?php echo $phone; ?>
