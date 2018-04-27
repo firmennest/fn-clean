@@ -14,6 +14,7 @@ function fn_login_redirect($login_header_url) {
 }
 add_filter( 'login_headerurl', 'fn_login_redirect' );
 
+
 // Add Custom Options Pages
 if( function_exists('acf_add_options_page') ) {
 
@@ -35,8 +36,8 @@ if( function_exists('acf_add_options_page') ) {
 
 }
 
-// Add ACF Fields to those Subpages
-// Use the import-file in our cloud to make changes here.
+// Add fields to those pages
+// To edit these fields, use the import file in our cloud (firmennest/wordpress/acf-export...)
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
@@ -174,6 +175,42 @@ acf_add_local_field_group(array(
 			'max_height' => '',
 			'max_size' => '',
 			'mime_types' => '',
+		),
+		array(
+			'key' => 'field_5ae2fcc5fd194',
+			'label' => '404-Seite',
+			'name' => '',
+			'type' => 'tab',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'placement' => 'top',
+			'endpoint' => 0,
+		),
+		array(
+			'key' => 'field_5ae2fcecfd195',
+			'label' => 'Inhalt',
+			'name' => '404_inhalt',
+			'type' => 'wysiwyg',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '<h1>Hier wurde nichts gefunden.</h1>
+<p>Gründe dafür könnten sein, dass Sie eine falsche oder veraltete URL aufgerufen haben.<br> Unter Umständen wurde die betreffende Seite auch verschoben oder gelöscht.</p>',
+			'tabs' => 'all',
+			'toolbar' => 'full',
+			'media_upload' => 1,
+			'delay' => 0,
 		),
 	),
 	'location' => array(
