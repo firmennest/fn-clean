@@ -3,6 +3,10 @@ firmennest base template
 
 # Version History
 
+__1.2.3 Apr 27, 2018__<br>
+- removed content and added acf-field call in 404.php
+- added 404 content edit functionality in lib/system/administration.php
+
 __1.2.2 Mar 27, 2018__<br>
 - removed titan-framework in order to use acf-option-pages
 - added option-pages & -fields calls in lib/system/administration.php
