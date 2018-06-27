@@ -11,6 +11,7 @@ __1.2.4 Apr 27, 2018__<br>
 - added blog.less in assets/less/theme
 - changed acf fields in lib/system/administration.php
 - added cookie notice to header.php and acf-fields #7
+- update to fontawesome 5.1
 
 __1.2.3 Apr 27, 2018__<br>
 - removed content and added acf-field call in 404.php
