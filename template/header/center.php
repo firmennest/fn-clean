@@ -4,39 +4,35 @@
   $logo_url = $logo_src[0];
 ?>
 
-<div class="uk-width-1-1" id="header-wrapper">
-  <div class="uk-container uk-container-center uk-margin-small-top uk-margin-small-bottom">
-    <header class="header-content">
-      <div class="uk-grid">
-        <div class="uk-width-small-1-2 uk-width-medium-1-4">
-          <a class="logo" href="<?php bloginfo('url'); ?>">
+<header class="uk-width-1-1">
+  <div class="uk-container uk-margin-top uk-margin-bottom">
+      <div uk-grid class="uk-flex uk-flex-bottom">
+        <div class="uk-width-2-3 uk-width-1-4@m logo">
+          <a href="<?php bloginfo('url'); ?>">
             <img src="<?php echo $logo_url; ?>" alt="">
           </a>
         </div>
-        <div class="uk-width-small-1-2 uk-width-medium-3-4 uk-text-right">
-          <nav class="main-nav-wrapper">
-            <ul class="uk-list main-menu uk-margin-bottom-remove uk-hidden-small">
+        <div class="uk-width-1-3 uk-width-3-4@m">
+          <nav>
+            <ul class="uk-subnav main-menu uk-margin-remove-bottom uk-flex-right uk-visible@m">
               <?php wp_nav_menu( array( 'fallback_cb' => 'fn_menu_fallback', 'menu' => 'menu', 'container' => false, 'theme_location'=>'main', 'items_wrap' => '%3$s' ) ); ?>
             </ul>
-            <ul class="uk-list main-menu-mobile uk-margin-bottom-remove uk-visible-small">
-              <li>
-                <a href="#menu" id="offcanvas" data-uk-offcanvas><i class="fal fa-bars "></i></a>
-              </li>
-            </ul>
+            <div class="uk-text-right main-menu-mobile uk-margin-bottom-remove uk-hidden@m">
+              <button class="uk-button uk-button-text" uk-toggle="target: #offcanvas" type="button"><i class="fal fa-bars fa-2x"></i></button>
+            </div>
           </nav>
         </div>
       </div>
-    </header>
   </div>
-</div>
+</header>
 
 <?php // Offcanvas Menu ?>
 
-<div id="menu" class="uk-offcanvas">
+<div id="offcanvas" uk-offcanvas>
   <div class="uk-offcanvas-bar">
-    <a class="uk-close uk-offcanvas-close" uk-close></a>
-    <nav>
-      <ul class="uk-list main-menu-mobile uk-margin-large-top">
+    <button class="uk-offcanvas-close uk-close-large" type="button" uk-close></button>
+    <nav class="uk-margin-large-top">
+      <ul class="uk-nav uk-nav-primary main-menu-mobile">
         <?php wp_nav_menu( array( 'fallback_cb' => 'fn_menu_fallback', 'menu' => 'menu', 'container' => false, 'theme_location'=>'main', 'items_wrap' => '%3$s' ) ); ?>
       </ul>
     </nav>

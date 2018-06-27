@@ -1,4 +1,4 @@
-<div class="uk-width-1-1" id="footer-center-wrapper">
+<div class="uk-width-1-1 footer-bottom uk-background-muted uk-padding">
 
   <?php
     $logo = get_field('company_logo', 'option');
@@ -14,18 +14,18 @@
     $fax = get_field('company_fax', 'option');
   ?>
 
-  <div class="uk-container uk-container-center">
-    <div class="uk-grid">
+  <div class="uk-container">
+    <div uk-grid>
 
-      <div class="uk-width-small-1-1 uk-width-medium-1-4">
+      <div class="uk-width-1-1 uk-width-1-4@m">
         <a class="logo" href="<?php bloginfo('url'); ?>">
           <img src="<?php echo $logo_url; ?>" alt="">
         </a>
       </div>
 
-      <div class="uk-width-small-1-1 uk-width-medium-2-4">
+      <div class="uk-width-1-1 uk-width-1-2@m">
 
-        <ul class="uk-list uk-column-small-1-1 uk-column-medium-1-2 info">
+        <ul class="uk-list uk-column-1-2@m info">
           <li>
             <?php echo $name; ?>
           </li>
@@ -48,7 +48,7 @@
 
       </div>
 
-      <div class="uk-width-small-1-1 uk-width-medium-1-4">
+      <div class="uk-width-1-1 uk-width-1-4@m">
         <ul class="uk-list footer-menu">
           <?php wp_nav_menu( array( 'fallback_cb' => 'fn_menu_fallback', 'menu' => 'menu', 'container' => false, 'theme_location'=>'footer', 'items_wrap' => '%3$s' ) ); ?>
         </ul>

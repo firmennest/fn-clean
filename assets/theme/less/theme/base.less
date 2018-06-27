@@ -1,20 +1,15 @@
-// HTML, Body 
+// HTML, Body
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 * {
   -webkit-font-smoothing: antialiased;
   word-wrap: break-word;
   hyphens: auto;
   box-sizing: border-box;
-  & .margin-left {
-    margin-left: 25px;
-  }
-  & .margin-top {
-    margin-top: 32px;
-  }
 }
 
-// Headlines 
+// Headlines
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 .uk-h1,
 .uk-h2,
 .uk-h3,
@@ -22,7 +17,6 @@
 .uk-h5,
 .uk-h6 {
   display: block;
-  font-weight: @base-heading-font-weight;
 }
 
 h1,
@@ -49,30 +43,36 @@ h6,
 .uk-h6 {
 }
 
-// Misc. Typo 
+// Misc. Typo
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 a {
   transition: @base-transition;
 }
 
-// Buttons 
+// Classes
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-a.uk-button {
-  color: @w;
-  background: @primary-color;
-  transition: @base-transition;
-  &.fn-button-line {
-    background: none;
-    border: 1px solid @primary-color;
-    color: @primary-color;
-    &:hover {
-      background: @primary-color;
-      color: @w;
-    }
-  }
+.kap {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: @global-small-font-size;
 }
 
-// Classes 
+// Uikit
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+[class*=uk-column-] {
+  h1,
+  h2,
+  h3,
+  .uk-h1,
+  .uk-h2,
+  .uk-h3 {
+    column-span: all;
+    text-align: center;
+  }
+  p {
+    margin: 0;
+  }
+}

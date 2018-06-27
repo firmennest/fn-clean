@@ -1,82 +1,24 @@
 // Header & Menus
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#header-wrapper {
-  ul {
-    &.main-menu {
-      > li {
-        display: inline-block;
-        position: relative;
-        &:not(:last-child) {
-          margin-right: 15px;
-        }
-        .sub-menu {
-          display: none;
-        }
-        &.current-menu-item,
-        &:hover {}
-        &:hover {
-          .sub-menu {
-            display: block;
-            padding: 15px 0 0;
-            position: absolute;
-            left: -15px;
-            white-space: nowrap;
-            z-index: 10;
-            text-align: left;
-            > li {
-              border-bottom: 1px solid fade(@w, 25%);
-              &:last-child {
-                border: none;
-              }
-              > a {
-                display: block;
-                color: @w !important;
-                border: none;
-                padding: 10px 30px 10px 15px;
-              }
-              &:hover {
-                background-color: fade(@w, 20%);
-              }
-            }
-          }
+
+header {
+
+}
+
+// Logo
+
+// Navigation
+
+header {
+  nav {
+    ul.main-menu {
+      li {
+        a {
+
         }
       }
     }
   }
 }
 
-// Mobile Menus
-.uk-offcanvas {
-  .uk-offcanvas-bar {
-    background: @darkgrey;
-    ul.main-menu-mobile {
-      > li {
-        &:not(:last-child) {
-          border-bottom: 1px solid fade(@w,10%);
-          ul {
-            padding: 0;
-            background: fade(@w,10%);
-            > li:not(:last-child) {
-              border-bottom: 1px solid fade(@black,10%);
-              a {
-                color: fade(@w,80%);
-              }
-            }
-          }
-        }
-        a {
-          color: @w;
-          display: block;
-          padding: 10px;
-        }
-      }
-    }
-    a.uk-close {
-      position: absolute;
-      top: 16px;
-      right: 15px;
-      font-size: 20px;
-      color: @w;
-    }
-  }
-}
+// Offcanvas

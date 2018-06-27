@@ -1,107 +1,65 @@
 <?php get_header(); ?>
 
-<div class="uk-container uk-container-center blog single-post">
-  <div class="uk-grid uk-margin-large-top uk-margin-large-bottom">
-    <div class="uk-width-small-1-1 uk-width-medium-7-10">
+<div class="uk-container uk-margin-large-top">
+  <div uk-grid class="uk-margin-large-bottom">
+    <?php // Article Loop ?>
+    <div class="uk-width-1-1 uk-width-4-5@m posts">
+      <?php // Article Start ?>
+      <article> <?php
+        if ( have_posts() ) {
+          while ( have_posts() ) {
+          the_post(); // ?>
 
-      <!-- Single Article START -->
-      <article class="post">
+          <div class="article-content">
 
-        <?php
-       if ( have_posts() ) {
-        while ( have_posts() ) {
-            the_post();
-            //
-            ?>
+            <?php // Article Title ?>
+            <h3 class="article-title uk-margin-remove">
+              <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
+                <?php the_title(); ?>
+              </a>
+            </h3>
 
-        <div class="article-content">
-          <!-- Article Title START-->
-          <h1 class="article-title lila">
-            <?php the_title(); ?>
-          </h1>
-          <!-- Article Title END-->
+            <?php // Article Meta ?>
+            <div class="article-meta uk-margin-bottom uk-text-small">
+              <span class="uk-margin-small-right">
+                <i class="fal fa-clock"></i> <?php the_time('d. F Y'); ?>
+              </span>
+              <span>
+                <i class="fal fa-tags"></i> <?php the_category( ', ' ); ?>
+              </span>
+            </div>
 
-          <!-- Article Meta START-->
-          <div class="article-meta">
-            <span class="date"><?php the_time('d. F Y'); ?></span>
-            <span class="author"><?php the_author_posts_link(); ?></span>
-            <span class="categories"><?php the_category( ', ' ); ?></span>
-          </div>
-          <!-- Article Meta END -->
-
-          <!-- Article Images START -->
-          <div class="image-container">
+            <?php // Thumbnail ?>
             <?php if ( has_post_thumbnail() ) : ?>
-              <img alt="<?php the_title_attribute(); ?>" src="<?php the_post_thumbnail_url('blog-large'); ?>"/>
-            <?php else : ?>
-            <?php
-              $blog_thumb = get_field('blog_std_img', 'option');
-              $blog_src = wp_get_attachment_image_src( $blog_thumb , 'medium' );
-              $blog_url = $blog_src[0];
-            ?>
-            <img alt="<?php the_title_attribute(); ?>" src="<?php echo $blog_url; ?>"/>
+            <div class="image-container">
+              <img alt="<?php the_title_attribute(); ?>" src="<?php the_post_thumbnail_url('medium'); ?>"/>
+            </div>
             <?php endif; ?>
-          </div>
-          <!-- Article Images END -->
 
-          <div class="article-text">
-            <?php
-              the_content();
-            ?>
-          </div>
+            <?php // Article Content ?>
+            <div class="article-text">
+            <?php the_content() ?>
+            </div>
 
-          <div class="article-footer">
-            <?php the_tags( '<span class="tags">',', ', '</span>' ); ?>
-          </div>
-
-        </div>
-        <?php
-            //
-        } // end while
-       } // end if
-      ?>
+          </div> <?php
+          } // end while
+        } // end if ?>
       </article>
-      <!-- Single Article END -->
-
     </div>
 
-
-    <!-- Sidebar START -->
-    <div class="uk-width-small-1-1 uk-width-medium-3-10 sidebar-wrapper">
-      <div class="sidebar">
-
-        <!-- Sidebar-Item START -->
-        <div class="sidebar-item search">
-          <?php get_search_form(); ?>
-        </div>
-        <!-- Sidebar-Item END -->
-
-        <!-- Sidebar-Item START -->
-        <div class="sidebar-item categories">
-          <p class="uk-h6">Kategorien</p>
-          <?php wp_list_categories( array(
-            'title_li' => '',
-            'show_count' => 1,
-          ) ); ?>
-        </div>
-        <!-- Sidebar-Item END -->
-
-        <!-- Sidebar-Item START -->
-        <div class="sidebar-item tags">
-          <p class="uk-h6">Tags</p>
-          <?php $tags = get_tags();
-            foreach ( $tags as $tag ) {
-                $tag_link = get_tag_link( $tag->term_id );
-                $html .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
-                $html .= "{$tag->name}</a>";
-            }
-            echo $html; ?>
-        </div>
-        <!-- Sidebar-Item END -->
-
+    <?php // Sidebar ?>
+    <div class="uk-width-1-1 uk-width-1-5@m sidebar">
+      <?php // Kategorien ?>
+      <div class="sidebar-item categories">
+        <p class="uk-h5"><?php _e( 'Kategorien' ); ?></p>
+        <ul class="uk-list uk-list-divider">
+        <?php wp_list_categories( array(
+          'title_li' => '',
+          'show_count' => 0,
+        ) ); ?>
+        </ul>
       </div>
     </div>
-    <!-- Sidebar END -->
   </div>
 </div>
 <?php get_footer(); ?>

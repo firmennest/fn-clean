@@ -1,153 +1,85 @@
 <?php get_header(); ?>
 
-<div class="uk-container uk-container-center blog">
-  <div class="uk-grid uk-margin-large-top uk-margin-large-bottom">
-    <div class="uk-width-small-1-1 uk-width-medium-7-10">
-
+<div class="uk-container uk-margin-large-top">
+  <div uk-grid class="uk-margin-large-bottom">
+    <?php // Page Title ?>
+    <div class="uk-width-1-1">
       <h1 class="page-title">
-        <?php wp_title('')?>
+        <?php wp_title(''); ?>
       </h1>
+    </div>
+    <?php // Article Loop1 ?>
+    <div class="uk-width-1-1 uk-width-4-5@m posts">
+      <?php // Loop Start
+      if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+        <?php // Article Start ?>
+        <article>
+          <div uk-grid>
+            <?php if ( has_post_thumbnail() ) : // Article Start with Thumbnail ?>
+              <div class="image-container uk-width-1-1 uk-width-1-4@m">
+                <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+                  <img alt="<?php the_title_attribute(); ?>" src="<?php the_post_thumbnail_url('thumbnail'); ?>"/>
+                </a>
+              </div>
+              <div class="article-content uk-width-1-1 uk-width-3-4@m">
+            <?php else :
+              // Article Start without Thumbnail ?>
+              <div class="article-content uk-width-1-1">
+            <?php endif; ?>
 
-      <!-- Start the Loop. -->
-      <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+                <?php // Article Title ?>
+                <h3 class="article-title uk-margin-remove">
+                  <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
+                    <?php the_title(); ?>
+                  </a>
+                </h3>
 
-      <!-- Single Article START -->
-      <article class="post">
-        <div class="uk-grid">
+                <?php // Article Meta ?>
+                <div class="article-meta uk-margin-bottom uk-text-small">
+                  <span class="uk-margin-small-right">
+                    <i class="fal fa-clock"></i> <?php the_time('d. F Y'); ?>
+                  </span>
+                  <span>
+                    <i class="fal fa-tags"></i> <?php the_category( ', ' ); ?>
+                  </span>
+                </div>
 
-          <!-- Article Images START -->
-          <div class="image-container uk-width-small-1-1 uk-width-medium-1-3">
-            <?php if ( has_post_thumbnail() ) : ?>
+                <?php // Article Intro ?>
+                <div class="article-text">
+                  <?php the_excerpt() ?>
+                </div>
 
-            <!-- Responsive Blog Images: Two different sizes. See system > media.php for custom image sizes. -->
-            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-                <img alt="<?php the_title_attribute(); ?>" src="<?php the_post_thumbnail_url('thumbnail'); ?>"/>
-            </a>
-
-            <?php else : ?>
-
-            <!-- Custom theme option for an universal intro image, when the single article has no image. -->
-            <?php
-              $blog_thumb = get_field('blog_std_img', 'option');
-              $blog_src = wp_get_attachment_image_src( $blog_thumb , 'thumbnail' );
-              $blog_url = $blog_src[0];
-            ?>
-              <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-                <img alt="<?php the_title_attribute(); ?>" src="<?php echo $blog_url; ?>"/>
-              </a>
-              <?php endif; ?>
-          </div>
-          <!-- Article Images END -->
-
-          <!-- Article Content START -->
-          <div class="article-content uk-width-small-1-1 uk-width-medium-2-3">
-
-            <!-- Article Title START-->
-            <h3 class="article-title">
-              <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
-                <?php the_title(); ?>
-              </a>
-            </h3>
-            <!-- Article Title END-->
-
-            <!-- Article Meta START-->
-            <div class="article-meta">
-              <span class="date">
-                <?php the_time('d. F Y'); ?>
-              </span>
-              <span class="author">
-                <?php the_author_posts_link(); ?>
-              </span>
-              <span class="categories">
-                <?php the_category( ', ' ); ?>
-              </span>
+              </div>
             </div>
-            <!-- Article Meta END -->
+        </article>
+      <?php endwhile; else : // If no posts are available ?>
+        <p>
+          <?php _e( 'Leider gibt es hier keine Beiträge.' ); ?>
+        </p>
+      <?php endif; // Loop End ?>
 
-            <!-- Article Intro START-->
-            <div class="article-intro">
-              <?php the_excerpt() ?>
-            </div>
-            <!-- Article Intro END -->
-
-            <!-- Article Footer START -->
-            <div class="article-footer">
-              <?php the_tags( '<span class="tags">',', ', '</span>' ); ?>
-              <p class="read-more"><a title="<?php the_title_attribute(); ?>" href="<?php the_permalink(); ?>"><?php _e( 'Weiterlesen' ); ?></a></p>
-            </div>
-            <!-- Article Footer END -->
-
-          </div>
-          <!-- Article Content END -->
-
-        </div>
-      </article>
-      <!-- Single Article END -->
-
-      <!-- Stop The Loop (but note the "else:" - see next line). -->
-
-      <?php endwhile; else : ?>
-
-      <!-- The very first "if" tested to see if there were any Posts to -->
-      <!-- display.  This "else" part tells what do if there weren't any. -->
-
-      <p>
-        <?php _e( 'Leider gibt es hier keine Beiträge.' ); ?>
-      </p>
-
-
-      <!-- REALLY stop The Loop. -->
-      <?php endif; ?>
-
-      <!-- Post Pagination START -->
-      <?php
-         the_posts_pagination( array(
-           'mid_size'  => 2,
-           'prev_text' => __( '' ),
-           'next_text' => __( '' ),
-           'type' => 'list',
-           ) );
-       ?>
-        <!-- Post Pagination END -->
+      <?php // Pagination
+        the_posts_pagination( array(
+        'mid_size'  => 2,
+        'prev_text' => __( '' ),
+        'next_text' => __( '' ),
+        'type' => 'list',
+      ) ); ?>
     </div>
 
-
-    <!-- Sidebar START -->
-    <div class="uk-width-small-1-1 uk-width-medium-3-10 sidebar-wrapper">
-      <div class="sidebar">
-
-        <!-- Sidebar-Item START -->
-        <div class="sidebar-item search">
-          <?php get_search_form(); ?>
-        </div>
-        <!-- Sidebar-Item END -->
-
-        <!-- Sidebar-Item START -->
-        <div class="sidebar-item categories">
-          <p class="uk-h6"><?php _e( 'Kategorien' ); ?></p>
-          <?php wp_list_categories( array(
-            'title_li' => '',
-            'show_count' => 1,
-          ) ); ?>
-        </div>
-        <!-- Sidebar-Item END -->
-
-        <!-- Sidebar-Item START -->
-        <div class="sidebar-item tags">
-          <p class="uk-h6"><?php _e( 'Tags' ); ?></p>
-          <?php $tags = get_tags();
-            foreach ( $tags as $tag ) {
-                $tag_link = get_tag_link( $tag->term_id );
-                $html .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
-                $html .= "{$tag->name}</a>";
-            }
-            echo $html; ?>
-        </div>
-        <!-- Sidebar-Item END -->
-
+    <?php // Sidebar ?>
+    <div class="uk-width-1-1 uk-width-1-5@m sidebar">
+      <?php // Kategorien ?>
+      <div class="sidebar-item categories">
+        <p class="uk-h5"><?php _e( 'Kategorien' ); ?></p>
+        <ul class="uk-list uk-list-divider">
+        <?php wp_list_categories( array(
+          'title_li' => '',
+          'show_count' => 0,
+        ) ); ?>
+        </ul>
       </div>
     </div>
-    <!-- Sidebar END -->
   </div>
 </div>
 <?php get_footer(); ?>

@@ -1,3 +1,3 @@
 // @codekit-prepend "jquery.min.js";
-// @codekit-prepend "js/frame-uikit.js";
-// @codekit-prepend "js/frame-uikit-components.js";
+// @codekit-prepend "js/uikit.min.js";
+// @codekit-prepend "js/uikit-icons.min.js";
