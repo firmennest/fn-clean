@@ -38,6 +38,7 @@ if( function_exists('acf_add_options_page') ) {
 
 // Add fields to those pages
 // To edit these fields, use the import file in our cloud (firmennest/wordpress/acf-export...)
+
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
@@ -211,6 +212,101 @@ acf_add_local_field_group(array(
 			'toolbar' => 'full',
 			'media_upload' => 1,
 			'delay' => 0,
+		),
+		array(
+			'key' => 'field_5b0813096b36e',
+			'label' => 'Cookie-Hinweis',
+			'name' => '',
+			'type' => 'tab',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'placement' => 'top',
+			'endpoint' => 0,
+		),
+		array(
+			'key' => 'field_5b0813226b36f',
+			'label' => 'Textmeldung',
+			'name' => 'cookie_text',
+			'type' => 'textarea',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => 'Um unsere Webseite für Sie optimal zu gestalten und fortlaufend verbessern zu können, verwenden wir Cookies. Durch die weitere Nutzung der Webseite stimmen Sie der Verwendung von Cookies zu. Weitere Informationen zu Cookies erhalten Sie hier:',
+			'placeholder' => '',
+			'maxlength' => '',
+			'rows' => '',
+			'new_lines' => '',
+		),
+		array(
+			'key' => 'field_5b0815766b370',
+			'label' => 'Aktiv?',
+			'name' => 'cookie_aktiv',
+			'type' => 'true_false',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '33.333',
+				'class' => '',
+				'id' => '',
+			),
+			'message' => '',
+			'default_value' => 1,
+			'ui' => 1,
+			'ui_on_text' => '',
+			'ui_off_text' => '',
+		),
+		array(
+			'key' => 'field_5b08159b6b371',
+			'label' => 'Link',
+			'name' => 'cookie_link',
+			'type' => 'page_link',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '33.333',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array(
+				0 => 'page',
+			),
+			'taxonomy' => array(
+			),
+			'allow_null' => 0,
+			'allow_archives' => 0,
+			'multiple' => 0,
+		),
+		array(
+			'key' => 'field_5b0818ab6b372',
+			'label' => 'Button-Text',
+			'name' => 'cookie_button',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '33.333',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => 'Akzeptieren',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
 		),
 	),
 	'location' => array(
