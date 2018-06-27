@@ -3,6 +3,15 @@ firmennest base template
 
 # Version History
 
+__1.2.4 Apr 27, 2018__<br>
+- uikit 3 updates in various files #11 (this also fixes #1 because uikit2 did need fa4)
+- uikit 3 icons added in assets/images #11
+- removed some files because they're not longer necessary #11 #1
+- minor changes in lib/system/medien.php and lib/system/menus.php
+- added blog.less in assets/less/theme
+- changed acf fields in lib/system/administration.php
+- added cookie notice to header.php and acf-fields #7
+
 __1.2.3 Apr 27, 2018__<br>
 - removed content and added acf-field call in 404.php
 - added 404 content edit functionality in lib/system/administration.php
