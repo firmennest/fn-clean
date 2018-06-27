@@ -19,6 +19,6 @@ add_theme_support( 'post-thumbnails' );
 function add_custom_sizes() {
   add_image_size( 'schema_company_logo', 151, 151);
   add_image_size( 'schema_company_image', 200, 200, array('center','center'));
-  add_image_size( 'intro', 1920, 500, array('center','center'));
+  add_image_size( 'intro', 1920, 600, array('center','center'));
 }
 add_action('after_setup_theme','add_custom_sizes');
