@@ -5,7 +5,7 @@ function add_theme_css() {
   if ( !is_admin() ) {
     wp_register_style( 'main-css', get_template_directory_uri() . '/assets/theme/css/main.css', array(), null, false);
     wp_enqueue_style( 'main-css');
-    wp_register_style( 'fontawesome-css', get_template_directory_uri() . '/assets/theme/css/fontawesome-all.min.css', array(), null, false);
+    wp_register_style( 'fontawesome-css', get_template_directory_uri() . '/assets/theme/css/fontawesome.min.css', array(), null, false);
     wp_enqueue_style( 'fontawesome-css');
   }
 }
