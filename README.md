@@ -3,6 +3,9 @@ firmennest base template
 
 # Version History
 
+__1.2.5 Jul 26, 2018__<br>
+- update to fontawesome 5.2
+
 __1.2.4 Apr 27, 2018__<br>
 - uikit 3 updates in various files #11 (this also fixes #1 because uikit2 did need fa4)
 - uikit 3 icons added in assets/images #11
