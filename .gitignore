@@ -1,2 +1,3 @@
 
-assets/theme/fonts/.DS_Store
+*.DS_Store
+*.icloud
