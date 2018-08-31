@@ -18,7 +18,7 @@
               <?php wp_nav_menu( array( 'fallback_cb' => 'fn_menu_fallback', 'menu' => 'menu', 'container' => false, 'theme_location'=>'main', 'items_wrap' => '%3$s' ) ); ?>
             </ul>
             <div class="uk-text-right main-menu-mobile uk-margin-bottom-remove uk-hidden@m">
-              <button class="uk-button uk-button-text" uk-toggle="target: #offcanvas" type="button"><i class="fal fa-bars fa-2x"></i></button>
+              <a href="#offcanvas" uk-toggle><span></span></a>
             </div>
           </nav>
         </div>
@@ -30,7 +30,6 @@
 
 <div id="offcanvas" uk-offcanvas>
   <div class="uk-offcanvas-bar">
-    <button class="uk-offcanvas-close uk-close-large" type="button" uk-close></button>
     <nav class="uk-margin-large-top">
       <ul class="uk-nav uk-nav-primary main-menu-mobile">
         <?php wp_nav_menu( array( 'fallback_cb' => 'fn_menu_fallback', 'menu' => 'menu', 'container' => false, 'theme_location'=>'main', 'items_wrap' => '%3$s' ) ); ?>
