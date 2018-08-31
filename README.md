@@ -3,6 +3,13 @@ firmennest base template
 
 # Version History
 
+__1.2.6 Aug 31, 2018__<br>
+- added animated burger-menu in template/header/center.php + header.less #14
+- added selection color and container variables in assets/theme/less/theme/variables.less #15 + #16
+- changed name of singular.less to content.less in assets/theme/less/theme/ #17 
+- update to fontawesome 5.3.1 #10
+- update to uikit 3.0.0 rc 12 #18
+
 __1.2.5 Jul 26, 2018__<br>
 - update to fontawesome 5.2
 
