@@ -13,6 +13,7 @@
     $cookie_button = get_field('cookie_button', 'option');
   ?>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title><?php wp_title( '|', true, 'right' ); ?> <?php echo $seo_title; ?></title>
   <meta name="description" content="<?php echo $seo_desc; ?>">
   <meta name="author" content="firmennest">
