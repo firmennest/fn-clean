@@ -3,6 +3,9 @@ firmennest base template
 
 # Version History
 
+__1.2.7 Nov 6, 2018__<br>
+- added IE render fix in header.php
+
 __1.2.6 Aug 31, 2018__<br>
 - added animated burger-menu in template/header/center.php + header.less #14
 - added selection color and container variables in assets/theme/less/theme/variables.less #15 + #16
