@@ -15,6 +15,8 @@ add_action('init', 'add_theme_css');
 // JS Files
 function add_theme_js() {
   if ( !is_admin() ) {
+    wp_register_script( 'base-js', get_template_directory_uri() . '/assets/theme/js/base-min.js', array(), null, false);
+    wp_enqueue_script( 'base-js');
     wp_register_script( 'theme-js', get_template_directory_uri() . '/assets/theme/js/theme-min.js', array(), null, false);
     wp_enqueue_script( 'theme-js');
   }
