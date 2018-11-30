@@ -1,19 +1,22 @@
 <?php
 
-// Shortcodes
+// Logo
 
-add_shortcode('fn-shortcode','fn_shortcode'); // 1. Ausgabe in Klammern, 2. Funktionsname, gleich dem Namen darunter.
-function fn_shortcode()
+add_shortcode('logo','fn_option_logo');
+function fn_option_logo()
 {
-  ob_start(); ?>
+  ob_start();
 
-  <p>Shortcode Inhalte</p>
+  $logo = get_field('company_logo', 'option');
+  $logo_src = wp_get_attachment_image_src( $logo , '' );
+  $logo_url = $logo_src[0];
 
-  <?php
+  echo '<img src="' . $logo_url . '" alt="">';
+
   return ob_get_clean();
 }
 
-// Theme Option Ausgabe Shortcodes
+// Firmenname
 
 add_shortcode('firmenname','fn_option_name');
 function fn_option_name()
@@ -25,6 +28,8 @@ function fn_option_name()
   return ob_get_clean();
 }
 
+// Straße
+
 add_shortcode('strasse','fn_option_strasse');
 function fn_option_strasse()
 {
@@ -34,6 +39,8 @@ function fn_option_strasse()
 
   return ob_get_clean();
 }
+
+// Stadt
 
 add_shortcode('plz-ort','fn_option_city');
 function fn_option_city()
@@ -48,6 +55,8 @@ function fn_option_city()
   return ob_get_clean();
 }
 
+// Telefon
+
 add_shortcode('telefon','fn_option_tel');
 function fn_option_tel()
 {
@@ -57,6 +66,8 @@ function fn_option_tel()
 
   return ob_get_clean();
 }
+
+// Fax
 
 add_shortcode('fax','fn_option_fax');
 function fn_option_fax()
@@ -68,12 +79,66 @@ function fn_option_fax()
   return ob_get_clean();
 }
 
+// Mail
+
 add_shortcode('mail','fn_option_mail');
 function fn_option_mail()
 {
   ob_start();
 
-  echo get_field('company_mail', 'option');
+  $mail = get_field('company_mail', 'option');
+  echo '<a href="mailto:' . antispambot( $mail ) . '">' . antispambot( $mail ) . '</a>';
+
+  return ob_get_clean();
+}
+
+// Land
+
+add_shortcode('land','fn_option_country');
+function fn_option_country()
+{
+  ob_start();
+
+  echo get_field('address_country', 'option');
+
+  return ob_get_clean();
+}
+
+// Font Awesome 5 Shortcode
+
+add_shortcode( 'fn-icon','fn_icon' );
+function fn_icon( $atts )
+{
+  ob_start();
+  $atts = shortcode_atts( array(
+    'type' => 'fal',
+    'name' => '',
+    'size' => '',
+    'cls' => '',
+  ), $atts,'fn_icon' );
+
+  if ( $atts['name'] ) {
+    $name = ' fa-' . $atts['name'];
+  }
+
+  $type = $atts['type'];
+  if ( $type == 'regular' || $type == 'medium' || $type == 'md' ) {
+    $type = 'far';
+  } elseif ( $type == 'strong' || $type == 'bold' || $type == 'solid' ) {
+    $type = 'fas';
+  } elseif ( $type == 'brands' || $type == 'brand' ) {
+    $type = 'fab';
+  }
+
+  if ( $atts['size'] ) {
+    $size = ' fa-' . $atts['size'];
+  }
+
+  if ( $atts['cls'] ) {
+    $class = $atts['cls'];
+  }
+
+  echo '<i class="' . $type . $name . $size . $class . '"></i>';
 
   return ob_get_clean();
 }
