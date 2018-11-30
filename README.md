@@ -3,6 +3,19 @@ firmennest base template
 
 # Version History
 
+
+__1.2.8 Nov 6, 2018__<br>
+- multilanguage support was added to the theme #13
+- fontawesome update to v5.5.0 #10 
+- added some shortcodes to match the theme settings in lib/theme/shortcode.php
+- added antispambot to the mail-shortcode in lib/theme/shortcode.php
+- added a fn-icon shortcode in lib/theme/shortcode.php
+- logo changed to shortcode and more advanced favicon code was added in header.php
+- changed the value of @global-muted-color to make subnav-items more readable in assets/theme/less/theme/variables.less
+- added z-index to the cookie alert in assets/theme/less/theme/content.less #19
+- css files were updated to match the recent changes in assets/theme/css
+- theme.js was renamed to base.js and a new theme.js was added in assets/theme/js
+
 __1.2.7 Nov 6, 2018__<br>
 - added IE render fix in header.php
 
