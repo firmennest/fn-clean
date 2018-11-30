@@ -14,6 +14,12 @@ function fn_login_redirect($login_header_url) {
 }
 add_filter( 'login_headerurl', 'fn_login_redirect' );
 
+// Make theme available for translation
+add_action( 'after_setup_theme', 'fn_lang_setup' );
+function fn_lang_setup(){
+  load_theme_textdomain( 'fn', get_template_directory() . '/lang' );
+}
+
 
 // Add Custom Options Pages
 if( function_exists('acf_add_options_page') ) {
