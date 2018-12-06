@@ -3,8 +3,10 @@ firmennest base template
 
 # Version History
 
+__1.2.9 Dez 6, 2018__<br>
+- added versioning to main.css & theme.js in lib/theme/assets.php
 
-__1.2.8 Nov 6, 2018__<br>
+__1.2.8 Nov 30, 2018__<br>
 - multilanguage support was added to the theme #13
 - fontawesome update to v5.5.0 #10 
 - added some shortcodes to match the theme settings in lib/theme/shortcode.php
