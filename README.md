@@ -5,6 +5,7 @@ firmennest base template
 
 __1.2.9 Dez 6, 2018__<br>
 - added versioning to main.css & theme.js in lib/theme/assets.php
+- button formats updated in lib/theme/editor.php
 
 __1.2.8 Nov 30, 2018__<br>
 - multilanguage support was added to the theme #13
