@@ -53,13 +53,13 @@ function my_mce_before_init_insert_formats( $init_array ) {
     array(
       'title' => 'Button',
       'inline' => 'a',
-      'classes' => 'uk-button',
+      'classes' => 'uk-button uk-button-primary',
       'selector' => 'a',
     ),
     array(
       'title' => 'Outline-Button',
       'inline' => 'a',
-      'classes' => 'uk-button fn-button-line',
+      'classes' => 'uk-button uk-button-default',
       'selector' => 'a',
     ),
   );  
