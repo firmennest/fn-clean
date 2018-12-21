@@ -2,6 +2,11 @@
 firmennest base template
 
 # Version History
+__1.3.1 Dez 21, 2018__<br>
+- added analytics-shortcode to shortcodes.php
+
+__1.3.0 Dez 12, 2018__<br>
+- changed cookie- & analytics-script in header.php
 
 __1.2.9 Dez 6, 2018__<br>
 - added versioning to main.css & theme.js in lib/theme/assets.php
