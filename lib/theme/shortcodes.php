@@ -110,7 +110,7 @@ add_shortcode('deactivate-ga','fn_deactivate_ga');
 function fn_deactivate_ga()
 {
   ob_start();
-    echo '<a href="javascript:gaOptout()" class="google-analytics">_('Google Analytics deaktivieren')</a>';
+    echo '<a href="javascript:gaOptout()" class="google-analytics">' . _('Google Analytics deaktivieren') . '</a>';
   return ob_get_clean();
 }
 
