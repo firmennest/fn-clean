@@ -104,6 +104,16 @@ function fn_option_country()
   return ob_get_clean();
 }
 
+// Analytics deaktivieren
+
+add_shortcode('deactivate-ga','fn_deactivate_ga');
+function fn_deactivate_ga()
+{
+  ob_start();
+    echo '<a href="javascript:gaOptout()" class="google-analytics">_('Google Analytics deaktivieren')</a>';
+  return ob_get_clean();
+}
+
 // Font Awesome 5 Shortcode
 
 add_shortcode( 'fn-icon','fn_icon' );
