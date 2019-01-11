@@ -2,6 +2,10 @@
 firmennest base template
 
 # Version History
+__1.3.2 Jan 11, 2019__<br>
+- Happy New Year!
+- fontawesome update to v5.6.3 #10 
+
 __1.3.1 Dez 21, 2018__<br>
 - added analytics-shortcode to shortcodes.php
 
