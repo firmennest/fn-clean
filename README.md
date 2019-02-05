@@ -2,6 +2,10 @@
 firmennest base template
 
 # Version History
+
+__1.3.3 Feb 5, 2019__<br>
+- fixed order for js files in lib/theme/assets.php
+
 __1.3.2 Jan 11, 2019__<br>
 - Happy New Year!
 - fontawesome update to v5.6.3 #10 
