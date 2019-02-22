@@ -18,7 +18,7 @@
   <meta name="description" content="<?php echo $seo_desc; ?>">
   <meta name="author" content="firmennest">
   <meta name="keywords" content="<?php echo $seo_keywords; ?>">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Favicon https://realfavicongenerator.net/ -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
