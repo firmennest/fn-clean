@@ -3,6 +3,14 @@ firmennest base template
 
 # Version History
 
+__1.3.4 Feb 23, 2019__<br>
+- removed user-scalable=no for google audit
+- added dropdown styles and changed offcanvas styling in assets/theme/less/header.less
+- updated logo call in template/header/center.php
+- changed fa-phone icon in template/footer/center.php
+- added uikit color fix in assets/theme/less/header.less
+- updated css & codekit files to match recent changes
+
 __1.3.3 Feb 5, 2019__<br>
 - fixed order for js files in lib/theme/assets.php
 
