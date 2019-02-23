@@ -12072,7 +12072,7 @@ header .main-menu-mobile > a {
 header .main-menu-mobile > a span {
   position: absolute;
   top: 19px;
-  left: 7px;
+  left: 0;
 }
 header .main-menu-mobile > a span:before,
 header .main-menu-mobile > a span:after {
