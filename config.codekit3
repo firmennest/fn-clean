@@ -1965,23 +1965,6 @@
 		"sI": 0,
 		"sU": 0
 		},
-	"/assets/theme/less/theme/editor.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/assets/theme/less/theme/editor-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/assets/theme/less/theme/editor.css.map": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/assets/theme/less/theme/editor.css.map",
-		"oF": 0
-		},
 	"/assets/theme/less/theme/editor.less": {
 		"aP": 0,
 		"bl": 0,
@@ -1992,8 +1975,8 @@
 		"ma": 1,
 		"mS": 0,
 		"oA": 0,
-		"oAP": "/assets/theme/less/theme/editor.css",
-		"oF": 0,
+		"oAP": "/assets/theme/css/editor.css",
+		"oF": 3,
 		"oS": 0,
 		"rwU": 0,
 		"sI": 0,

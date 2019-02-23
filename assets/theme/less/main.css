@@ -11927,6 +11927,7 @@ a img.aligncenter {
 }
 * {
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   word-wrap: break-word;
   -webkit-hyphens: auto;
       -ms-hyphens: auto;
