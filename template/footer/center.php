@@ -1,25 +1,11 @@
 <div class="uk-width-1-1 footer-bottom uk-background-muted uk-padding">
 
-  <?php
-    $logo = get_field('company_logo', 'option');
-    $logo_src = wp_get_attachment_image_src( $logo , '' );
-    $logo_url = $logo_src[0];
-    $name = get_field('company_name', 'option');
-    $street = get_field('address_street', 'option');
-    $postal = get_field('address_postal', 'option');
-    $city = get_field('address_city', 'option');
-    $country = get_field('address_country', 'option');
-    $mail = get_field('company_mail', 'option');
-    $phone = get_field('company_phone', 'option');
-    $fax = get_field('company_fax', 'option');
-  ?>
-
   <div class="uk-container">
     <div uk-grid>
 
-      <div class="uk-width-1-1 uk-width-1-4@m">
-        <a class="logo" href="<?php bloginfo('url'); ?>">
-          <img src="<?php echo $logo_url; ?>" alt="">
+      <div class="uk-width-1-1 uk-width-1-4@m logo">
+        <a href="<?php bloginfo('url'); ?>">
+          <?php echo do_shortcode('[logo]'); ?>
         </a>
       </div>
 
@@ -27,22 +13,22 @@
 
         <ul class="uk-list uk-column-1-2@m info">
           <li>
-            <?php echo $name; ?>
+            <?php echo do_shortcode('[firmenname]'); ?>
           </li>
           <li>
-            <?php echo $street; ?>
+            <?php echo do_shortcode('[strasse]'); ?>
           </li>
           <li>
-            <?php echo $postal .' '. $city; ?>
+            <?php echo do_shortcode('[plz-ort]'); ?>
           </li>
           <li>
-            <i class="fal fa-phone"></i> <?php echo $phone; ?>
+            <i class="fal fa-phone fa-flip-horizontal fa-fw"></i> <?php echo do_shortcode('[telefon]'); ?>
           </li>
           <li>
-            <i class="fal fa-fax"></i> <?php echo $fax; ?>
+            <i class="fal fa-fax fa-fw"></i> <?php echo do_shortcode('[fax]'); ?>
           </li>
           <li>
-            <i class="fal fa-envelope"></i> <a href="mailto:<?php echo $mail; ?>"><?php echo $mail; ?></a>
+            <i class="fal fa-envelope fa-fw"></i> <?php echo do_shortcode('[mail]'); ?></a>
           </li>
         </ul>
 
