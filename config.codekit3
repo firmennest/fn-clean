@@ -1880,23 +1880,6 @@
 		"sC": 3,
 		"tS": 0
 		},
-	"/assets/theme/less/main.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/assets/theme/less/main-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/assets/theme/less/main.css.map": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/assets/theme/less/main.css.map",
-		"oF": 0
-		},
 	"/assets/theme/less/main.less": {
 		"aP": 1,
 		"bl": 0,
@@ -1907,8 +1890,8 @@
 		"ma": 1,
 		"mS": 1,
 		"oA": 0,
-		"oAP": "/assets/theme/less/main.css",
-		"oF": 0,
+		"oAP": "/assets/theme/css/main.css",
+		"oF": 2,
 		"oS": 0,
 		"rwU": 0,
 		"sI": 0,
