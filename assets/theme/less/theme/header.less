@@ -12,9 +12,61 @@ header {
 header {
   nav {
     ul.main-menu {
+      > li{
+        > a{
+          color: @txt;
+          padding: 15px 0;
+        }
+      }
       li {
         a {
-
+          display: block;
+          &:hover{
+            text-decoration: none;
+          }
+        }
+        &.current-menu-item, &:hover {
+          a {
+            color: @secondary-color;
+          }
+        }
+        > .sub-menu{
+          position: absolute;
+          transform: translateY(8%) scale(0.95);
+          transition: all 0.2s;
+          list-style-type: none;
+          opacity: 0;
+          padding: 0;
+          visibility: hidden;
+          overflow: hidden;
+          left: 0;
+          top: 100%;
+          white-space: nowrap;
+          z-index: 10;
+          text-align: left;
+          background-color: fade(@secondary-color, 90%);
+          color: @w;
+          box-shadow: 0 10px 20px 0 fade(@black,10%);
+          > li{
+            > a{
+              padding: 10px 30px 10px 15px;
+              color: @w;
+              &:not(:last-child){
+                border-bottom: 1px solid fade(@w, 15%);
+              }
+              &:hover{
+                background-color: fade(@w, 10%)
+              }
+            }
+          }
+        }
+        &:hover {
+          > .sub-menu{
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            visibility: visible;
+            overflow: visible;
+          }
         }
       }
     }
@@ -26,16 +78,15 @@ header {
 
   .main-menu-mobile > a {
     z-index: 999;
-    top: 24px;
-    right: 37px;
-    position: absolute;
     width: 35px;
     height: 35px;
     background: none;
     border: 0;
     padding: 0;
     margin: 0;
+    position: relative;
     cursor: pointer;
+    display: inline-block;
     span {
       position: absolute;
       top: 19px;
@@ -65,18 +116,26 @@ header {
 // Offcanvas
 
 .uk-offcanvas-container {
-  .main-menu-mobile > a {
-    span {
-      -webkit-transform: rotate(45deg);
-      transform: rotate(45deg);
-      &:before {
-        top: 0;
-        opacity: 0;
+  .main-menu-mobile {
+    > a {
+      span {
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        &:before {
+          top: 0;
+          opacity: 0;
+        }
+        &:after {
+          bottom: 0;
+          -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+        }
       }
-      &:after {
-        bottom: 0;
-        -webkit-transform: rotate(-90deg);
-        transform: rotate(-90deg);
+    }
+    > li > .sub-menu {
+      padding: 5px 0 5px 15px;
+      a {
+        opacity: 0.8;
       }
     }
   }
