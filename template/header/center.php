@@ -9,7 +9,7 @@
       <div uk-grid class="uk-flex uk-flex-bottom">
         <div class="uk-width-2-3 uk-width-1-4@m logo">
           <a href="<?php bloginfo('url'); ?>">
-            <img src="<?php echo $logo_url; ?>" alt="">
+            <?php echo do_shortcode('[logo]'); ?>
           </a>
         </div>
         <div class="uk-width-1-3 uk-width-3-4@m">
