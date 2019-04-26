@@ -1,15 +1,15 @@
-<div class="uk-width-1-1 footer-bottom uk-background-muted uk-padding">
+<div class="uk-width-1-1 footer-center uk-background-muted uk-padding">
 
   <div class="uk-container">
     <div uk-grid>
 
-      <div class="uk-width-1-1 uk-width-1-4@m logo">
+      <div class="uk-width-1-4@m logo">
         <a href="<?php bloginfo('url'); ?>">
           <?php echo do_shortcode('[logo]'); ?>
         </a>
       </div>
 
-      <div class="uk-width-1-1 uk-width-1-2@m">
+      <div class="uk-width-1-2@m">
 
         <ul class="uk-list uk-column-1-2@m info">
           <li>
@@ -34,7 +34,7 @@
 
       </div>
 
-      <div class="uk-width-1-1 uk-width-1-4@m">
+      <div class="uk-width-1-4@m">
         <ul class="uk-list footer-menu">
           <?php wp_nav_menu( array( 'fallback_cb' => 'fn_menu_fallback', 'menu' => 'menu', 'container' => false, 'theme_location'=>'footer', 'items_wrap' => '%3$s' ) ); ?>
         </ul>
