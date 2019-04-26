@@ -7,7 +7,6 @@
   $instagram = get_field('social_instagram', 'option');
   $pinterest = get_field('social_pinterest', 'option');
   $youtube = get_field('social_youtube', 'option');
-  $googleplus = get_field('social_googleplus', 'option');
   $xing = get_field('social_xing', 'option');
   $linkedin = get_field('social_linkedin', 'option');
 ?>
@@ -16,14 +15,14 @@
   <div uk-grid class="uk-margin-small-top uk-margin-small-bottom">
 
     <?php // Copyright ?>
-    <div class="uk-width-1-1 uk-width-1-3@m copy uk-text-left@m">
+    <div class="uk-width-1-3@m copy uk-text-left@m">
       <a href="<?php bloginfo('url') ?>">
         &copy; <?php echo date('Y') .'&ensp;'. $name; ?>
       </a>
     </div>
 
     <?php // Social ?>
-    <div class="uk-width-1-1 uk-width-1-3@m social">
+    <div class="uk-width-1-3@m social">
       <ul class="uk-subnav">
       <?php if ($facebook) {
         echo '<li><a href="' . $facebook . '" target="_blank"><i class="fab fa-facebook-f"></i></a></li>';
@@ -40,9 +39,6 @@
       if ($youtube) {
         echo '<li><a href="' . $youtube . '" target="_blank"><i class="fab fa-youtube"></i></a></li>';
       }
-      if ($googleplus) {
-        echo '<li><a href="' . $googleplus . '" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>';
-      }
       if ($xing) {
         echo '<li><a href="' . $xing . '" target="_blank"><i class="fab fa-xing"></i></a></li>';
       }
@@ -53,7 +49,7 @@
     </div>
 
     <?php // Menu Area ?>
-    <div class="uk-width-1-1 uk-width-1-3@m menu">
+    <div class="uk-width-1-3@m menu">
       <ul class="uk-subnav uk-flex-center uk-flex-right@m">
         <?php wp_nav_menu( array( 'fallback_cb' => 'fn_menu_fallback', 'menu' => 'menu', 'container' => false, 'theme_location'=>'footer', 'items_wrap' => '%3$s' ) ); ?>
       </ul>
