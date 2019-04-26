@@ -60,6 +60,30 @@ a {
   font-size: @global-small-font-size;
 }
 
+// Buttons
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+.uk-button-default {
+  background: none;
+  border: 1px solid @txt;
+  &:hover {
+    background: @txt;
+    color: @w;
+  }
+}
+
+.uk-light {
+  .uk-button-default {
+    background: none;
+    border: 1px solid @w;
+    color: @w;
+    &:hover {
+      background: @w;
+      color: @txt;
+    }
+  }
+}
+
 // Uikit
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -76,8 +100,4 @@ a {
   p {
     margin: 0;
   }
-}
-
-.uk-card-primary.uk-card-body .uk-subnav>*>:first-child, .uk-card-primary>:not([class*=uk-card-media]) .uk-subnav>*>:first-child, .uk-card-secondary.uk-card-body .uk-subnav>*>:first-child, .uk-card-secondary>:not([class*=uk-card-media]) .uk-subnav>*>:first-child, .uk-light .uk-subnav>*>:first-child, .uk-offcanvas-bar .uk-subnav>*>:first-child, .uk-overlay-primary .uk-subnav>*>:first-child, .uk-section-primary:not(.uk-preserve-color) .uk-subnav>*>:first-child, .uk-section-secondary:not(.uk-preserve-color) .uk-subnav>*>:first-child, .uk-tile-primary:not(.uk-preserve-color) .uk-subnav>*>:first-child, .uk-tile-secondary:not(.uk-preserve-color) .uk-subnav>*>:first-child, .uk-card-primary.uk-card-body .uk-nav-primary>li>a, .uk-card-primary>:not([class*=uk-card-media]) .uk-nav-primary>li>a, .uk-card-secondary.uk-card-body .uk-nav-primary>li>a, .uk-card-secondary>:not([class*=uk-card-media]) .uk-nav-primary>li>a, .uk-light .uk-nav-primary>li>a, .uk-offcanvas-bar .uk-nav-primary>li>a, .uk-overlay-primary .uk-nav-primary>li>a, .uk-section-primary:not(.uk-preserve-color) .uk-nav-primary>li>a, .uk-section-secondary:not(.uk-preserve-color) .uk-nav-primary>li>a, .uk-tile-primary:not(.uk-preserve-color) .uk-nav-primary>li>a, .uk-tile-secondary:not(.uk-preserve-color) .uk-nav-primary>li>a {
-  color: @w;
 }
