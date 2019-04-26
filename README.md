@@ -3,6 +3,15 @@ firmennest base template
 
 # Version History
 
+__1.3.5 Apr 26, 2019__<br>
+- uk-button-default styles added in base.less
+- often used variables added in variables.less
+- shortcodes for owner and mobile added, fn-icon shortcode renamed to icon in shortcodes.php
+- added option for owner and mobile in administration.php
+- post thumbnail fallback added in index.php, archive.php & single.php
+- typo fixed + uk-width-1-1 removed in template/footer-center.php
+- google+ call removed, uk-width-1-1 removed in template/footer-bottom.php
+
 __1.3.4 Feb 23, 2019__<br>
 - removed user-scalable=no for google audit
 - added dropdown styles and changed offcanvas styling in assets/theme/less/header.less
