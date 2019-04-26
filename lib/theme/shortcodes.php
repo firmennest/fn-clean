@@ -28,6 +28,18 @@ function fn_option_name()
   return ob_get_clean();
 }
 
+// Inhaber
+
+add_shortcode('inhaber','fn_option_owner');
+function fn_option_owner()
+{
+  ob_start();
+
+  echo the_field('company_owner', 'option');
+
+  return ob_get_clean();
+}
+
 // Straße
 
 add_shortcode('strasse','fn_option_strasse');
@@ -63,6 +75,18 @@ function fn_option_tel()
   ob_start();
 
   echo get_field('company_phone', 'option');
+
+  return ob_get_clean();
+}
+
+// Mobil
+
+add_shortcode('mobil','fn_option_mobile');
+function fn_option_mobile()
+{
+  ob_start();
+
+  echo get_field('company_mobile', 'option');
 
   return ob_get_clean();
 }
@@ -116,7 +140,7 @@ function fn_deactivate_ga()
 
 // Font Awesome 5 Shortcode
 
-add_shortcode( 'fn-icon','fn_icon' );
+add_shortcode( 'icon','fn_icon' );
 function fn_icon( $atts )
 {
   ob_start();
