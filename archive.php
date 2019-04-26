@@ -8,17 +8,23 @@
         <?php wp_title(''); ?>
       </h1>
     </div>
-    <?php // Article Loop1 ?>
-    <div class="uk-width-1-1 uk-width-4-5@m posts">
+    <?php // Article Loop ?>
+    <div class="uk-width-4-5@m posts">
       <?php // Loop Start
       if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
         <?php // Article Start ?>
         <article>
           <div uk-grid>
-            <?php if ( has_post_thumbnail() ) : // Article Start with Thumbnail ?>
-              <div class="image-container uk-width-1-1 uk-width-1-4@m">
+            <?php if ( has_post_thumbnail() || get_field('blog_std_img', 'option') ) : // Article Start with Thumbnail ?>
+              <div class="image-container uk-margin-large-bottom uk-width-1-4@m">
                 <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-                  <img alt="<?php the_title_attribute(); ?>" src="<?php the_post_thumbnail_url('thumbnail'); ?>"/>
+                  <img alt="<?php the_title_attribute(); ?>" src="<?php
+                    if ( has_post_thumbnail() ) :
+                      the_post_thumbnail_url('thumbnail');
+                    elseif ( get_field('blog_std_img', 'option') ) :
+                      echo wp_get_attachment_image_src( get_field('blog_std_img', 'option'), 'thumbnail' )[0];
+                    endif;
+                  ?>"/>
                 </a>
               </div>
               <div class="article-content uk-width-1-1 uk-width-3-4@m">
@@ -68,7 +74,7 @@
     </div>
 
     <?php // Sidebar ?>
-    <div class="uk-width-1-1 uk-width-1-5@m sidebar">
+    <div class="uk-width-1-5@m sidebar">
       <?php // Kategorien ?>
       <div class="sidebar-item categories">
         <p class="uk-h5"><?php _e( 'Kategorien' ); ?></p>

@@ -3,7 +3,7 @@
 <div class="uk-container uk-margin-large-top">
   <div uk-grid class="uk-margin-large-bottom">
     <?php // Article Loop ?>
-    <div class="uk-width-1-1 uk-width-4-5@m posts">
+    <div class="uk-width-4-5@m posts">
       <?php // Article Start ?>
       <article> <?php
         if ( have_posts() ) {
@@ -30,9 +30,15 @@
             </div>
 
             <?php // Thumbnail ?>
-            <?php if ( has_post_thumbnail() ) : ?>
+            <?php if ( has_post_thumbnail() || get_field('blog_std_img', 'option') ) : ?>
             <div class="image-container">
-              <img alt="<?php the_title_attribute(); ?>" src="<?php the_post_thumbnail_url('medium'); ?>"/>
+              <img alt="<?php the_title_attribute(); ?>" src="<?php
+                if ( has_post_thumbnail() ) :
+                  the_post_thumbnail_url('medium');
+                elseif ( get_field('blog_std_img', 'option') ) :
+                  echo wp_get_attachment_image_src( get_field('blog_std_img', 'option'), 'medium' )[0];
+                endif;
+              ?>"/>
             </div>
             <?php endif; ?>
 
@@ -48,7 +54,7 @@
     </div>
 
     <?php // Sidebar ?>
-    <div class="uk-width-1-1 uk-width-1-5@m sidebar">
+    <div class="uk-width-1-5@m sidebar">
       <?php // Kategorien ?>
       <div class="sidebar-item categories">
         <p class="uk-h5"><?php _e( 'Kategorien' ); ?></p>
