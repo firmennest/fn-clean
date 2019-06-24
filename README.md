@@ -3,6 +3,12 @@ firmennest base template
 
 # Version History
 
+__1.3.6 Jun 24, 2019__<br>
+- removed cookie notice in header.less
+- added cookie notice in footer.less
+- fixed css in assets/theme/less/theme/header.less:
+- fontawesome update to 5.9.0 #10
+
 __1.3.5 Apr 26, 2019__<br>
 - uk-button-default styles added in base.less
 - often used variables added in variables.less
@@ -25,7 +31,7 @@ __1.3.3 Feb 5, 2019__<br>
 
 __1.3.2 Jan 11, 2019__<br>
 - Happy New Year!
-- fontawesome update to v5.6.3 #10 
+- fontawesome update to v5.6.3 #10
 
 __1.3.1 Dez 21, 2018__<br>
 - added analytics-shortcode to shortcodes.php
@@ -39,7 +45,7 @@ __1.2.9 Dez 6, 2018__<br>
 
 __1.2.8 Nov 30, 2018__<br>
 - multilanguage support was added to the theme #13
-- fontawesome update to v5.5.0 #10 
+- fontawesome update to v5.5.0 #10
 - added some shortcodes to match the theme settings in lib/theme/shortcode.php
 - added antispambot to the mail-shortcode in lib/theme/shortcode.php
 - added a fn-icon shortcode in lib/theme/shortcode.php
@@ -55,7 +61,7 @@ __1.2.7 Nov 6, 2018__<br>
 __1.2.6 Aug 31, 2018__<br>
 - added animated burger-menu in template/header/center.php + header.less #14
 - added selection color and container variables in assets/theme/less/theme/variables.less #15 + #16
-- changed name of singular.less to content.less in assets/theme/less/theme/ #17 
+- changed name of singular.less to content.less in assets/theme/less/theme/ #17
 - update to fontawesome 5.3.1 #10
 - update to uikit 3.0.0 rc 12 #18
 
