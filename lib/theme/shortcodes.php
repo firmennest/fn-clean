@@ -169,7 +169,7 @@ function fn_icon( $atts )
   }
 
   if ( $atts['cls'] ) {
-    $class = $atts['cls'];
+    $class = ' ' . $atts['cls'];
   }
 
   echo '<i class="' . $type . $name . $size . $class . '"></i>';
