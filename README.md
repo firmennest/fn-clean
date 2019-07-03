@@ -3,6 +3,9 @@ firmennest base template
 
 # Version History
 
+__1.3.7 Jul 3, 2019__<br>
+- added space to custom class attribute (fn_icon) in shortcodes.php
+
 __1.3.6 Jun 24, 2019__<br>
 - removed cookie notice in header.less
 - added cookie notice in footer.less
