@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="uk-height-1-1">
+<html class="uk-height-1-1" <?php language_attributes(); ?>>
 <head>
   <?php
     $seo_title = get_field('seo_title', 'option');
