@@ -4,6 +4,7 @@ body {
 
 // Variables
 @import "variables.less";
+@import "/less/components/button.less";
 
 // Base
 @import "base.less";
@@ -70,6 +71,46 @@ h6 {
 p {
   margin: @global-margin 0;
   padding: 0;
+}
+
+.uk-text-large {
+  font-size: @global-large-font-size;
+  line-height: 1.5;
+}
+
+.uk-text-small {
+  font-size: @global-small-font-size;
+  line-height: 1.5;
+}
+
+.uk-text-primary {
+  color: @primary-color;
+}
+
+.uk-text-muted {
+  color: @global-muted-color;
+}
+
+.uk-button.uk-button-primary {
+  .uk-button;
+  .uk-button-primary;
+}
+
+.uk-button.uk-button-default {
+  .uk-button;
+  .uk-button-default;
+}
+
+// Editor Bugfixes
+
+.mce-content-body a.uk-button.uk-button-primary[data-mce-selected] {
+  .uk-button;
+  .uk-button-primary;
+}
+
+.mce-content-body a.uk-button.uk-button-default[data-mce-selected] {
+  .uk-button;
+  .uk-button-default;
 }
 
 // Wordpress
