@@ -16,3 +16,6 @@ require_once('widget.php');
 
 /** Shortcodes **/
 require_once('shortcodes.php');
+
+/** Content **/
+require_once('content.php');
