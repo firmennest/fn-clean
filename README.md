@@ -3,6 +3,18 @@ firmennest base template
 
 # Version History
 
+__1.3.8 Aug 19, 2019__<br>
+- added language attribues in header.php
+- update to uikit 3.1.7
+- removed call for fontawesome.css in lib/theme/assets.php
+- added call for fontawesome less-files in assets/theme/less/main.less
+- added fontawesome files for easier updates & variables usage
+- added form styles for checkbox & ajax-loader in assets/theme/less/theme/forms.less
+- added file for content functions & added function for clean phone numbers in lib/theme/content.php
+- added call for content.php in lib/theme/config.php
+- fixed non-displaying styles for backend-editor lib/theme/editor.php
+- added more styles for backend-editor in assets/theme/less/theme/editor.less
+
 __1.3.7 Jul 3, 2019__<br>
 - added space to custom class attribute (fn_icon) in shortcodes.php
 
