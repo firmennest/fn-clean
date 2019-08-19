@@ -82,26 +82,52 @@
   border: 1px solid @lightgrey;
 }
 
-// Acceptance
+// Acceptance & Checkbox
 
-.wpcf7-acceptance {
-  label {
-    font-size: @global-small-font-size;
+.wpcf7-acceptance, .wpcf7-checkbox {
+  position: relative;
+  padding-left: 30px;
+  display: block;
+  margin-bottom: 5px;
+  label, span.wpcf7-list-item-label {
+    font-size: 17px;
+    display: block;
+    line-height: 1.6;
   }
   input {
-    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    top: 9px;
+  }
+}
+
+// Checkbox
+
+.wpcf7-checkbox {
+  input {
+    .uk-checkbox();
+    &:focus {
+      outline: none;
+    }
+    &:checked {
+      .svg-fill(@internal-form-checkbox-image, "#000", @form-radio-checked-icon-color);
+    }
+    &:checked:focus, .uk-checkbox:indeterminate:focus, .uk-radio:checked:focus {
+      background-color: @primary-color;
+    }
   }
 }
 
 // Submit Button
 
 .wpcf7-submit {
-
+  appearance: none;
 }
 
 // CF7 Overrides
 
 .wpcf7 {
+  position: relative;
 
   // Inline-Lists
 
@@ -123,19 +149,48 @@
 
   .wpcf7-response-output {
     .uk-alert();
-    font-size: 16px;
-    margin: 0;
+    font-size: 14px;
     padding: 13px 29px 9px 15px;
+    margin: 15px 0 0 0;
   }
 
   .wpcf7-validation-errors {
     .uk-alert-danger();
-    border: 1px solid @alert-danger-color;
+    border: none;
   }
 
   .wpcf7-mail-sent-ok {
     .uk-alert-success();
-    border: 1px solid @alert-success-color;
+    border: none;
+  }
+
+  // AJAX Loader
+
+  .ajax-loader {
+    position: absolute;
+    right: 11px;
+    bottom: 11px;
+    background-image: none !important;
+    width: 20px !important;
+    height: 20px !important;
+    &:after {
+      content: @fa-var-spinner-third;
+      .far;
+      .fa-icon;
+      animation: fa-spin 1s infinite linear;
+      display: block;
+      color: @w;
+      line-height: 20px;
+    }
+
+    @keyframes fa-spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg); }
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg); }
+    }
   }
 
 }
