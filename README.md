@@ -10,6 +10,7 @@ __1.4.0 Feb 10, 2020__<br>
 - workflow update + cleanup in index, archive & single.php
 - fixed intro image showing up for index, archive & single.php in template/header/bottom.php 
 - compiled version update for main.css
+- added attachments.php for seo - creates redirect
 
 __1.3.8 Aug 19, 2019__<br>
 - added language attribues in header.php
