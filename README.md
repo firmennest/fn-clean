@@ -3,12 +3,20 @@ firmennest base template
 
 # Version History
 
+__1.4.0 Feb 10, 2020__<br>
+- Happy New Year!
+- fontawesome update to v5.12.1
+- fixed color of em and code elements in variables.less
+- workflow update + cleanup in index, archive & single.php
+- fixed intro image showing up for index, archive & single.php in template/header/bottom.php 
+- compiled version update for main.css
+
 __1.3.8 Aug 19, 2019__<br>
 - added language attribues in header.php
 - update to uikit 3.1.7
 - removed call for fontawesome.css in lib/theme/assets.php
 - added call for fontawesome less-files in assets/theme/less/main.less
-- added fontawesome files for easier updates & variables usage
+- added fontawesome files to less instead of css for easier updates & variables usage
 - added form styles for checkbox & ajax-loader in assets/theme/less/theme/forms.less
 - added file for content functions & added function for clean phone numbers in lib/theme/content.php
 - added call for content.php in lib/theme/config.php
