@@ -20,27 +20,145 @@ function fn_lang_setup(){
   load_theme_textdomain( 'fn', get_template_directory() . '/lang' );
 }
 
-
-// Add Custom Options Pages
-if( function_exists('acf_add_options_page') ) {
-
-	// Add Sub Page
-	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Unternehmen',
-		'menu_title' 	=> 'Unternehmen',
-		'parent_slug' 	=> 'options-general.php',
-    'menu_slug'  => 'unternehmen',
-	));
-
-  // Add Sub Page
-	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Theme Einstellungen',
-		'menu_title' 	=> 'Theme',
-		'parent_slug' 	=> 'options-general.php',
-    'menu_slug'  => 'theme',
-	));
-
+/**
+  * Adds theme support for custom header, feed links, title tag, post formats, HTML5 and post thumbnails
+*/
+function fn_add_theme_support() {
+  add_theme_support( 'html5', array(
+    'comment-list',
+    'comment-form',
+    'search-form',
+    'gallery',
+    'caption',
+  ) );
+  add_theme_support( 'post-thumbnails' );
 }
+add_action( 'after_setup_theme', 'fn_add_theme_support' );
+
+/**
+ * Disable the emoji's
+*/
+function fn_disable_emojis() {
+  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+  remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+  remove_action( 'wp_print_styles', 'print_emoji_styles' );
+  remove_action( 'admin_print_styles', 'print_emoji_styles' );
+  remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+  remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+  remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+  add_filter( 'tiny_mce_plugins', 'fn_disable_emojis_tinymce' );
+  add_filter( 'wp_resource_hints', 'fn_disable_emojis_remove_dns_prefetch', 10, 2 );
+}
+add_action( 'init', 'fn_disable_emojis' );
+
+/**
+ * Filter function used to remove the tinymce emoji plugin.
+ *
+ * @param array $plugins
+ * @return array Difference betwen the two arrays
+ */
+
+function fn_disable_emojis_tinymce( $plugins ) {
+  if ( is_array( $plugins ) ) {
+    return array_diff( $plugins, array( 'wpemoji' ) );
+  } else {
+    return array();
+  }
+}
+
+/**
+ * Remove emoji CDN hostname from DNS prefetching hints.
+ *
+ * @param array $urls URLs to print for resource hints.
+ * @param string $relation_type The relation type the URLs are printed for.
+ * @return array Difference betwen the two arrays.
+ */
+
+function fn_disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
+  if ( 'dns-prefetch' == $relation_type ) {
+    /** This filter is documented in wp-includes/formatting.php */
+    $emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
+    $urls = array_diff( $urls, array( $emoji_svg_url ) );
+ }
+ return $urls;
+}
+
+/**
+ * Register a custom menu page.
+ */
+function fn_register_fn_settings() {
+    $menu = add_menu_page(
+        __( 'firmennest Theme', 'fn-theme' ),
+        'Theme',
+        'manage_options',
+        'fn_theme',
+        'fn_theme_menu_page',
+        get_template_directory_uri() . '/assets/admin/fn_theme_icon.svg',
+        99
+    );
+    add_action( 'admin_print_styles-' . $menu, 'fn_theme_admin_css' );
+
+    // Add Custom Options Pages
+    if( function_exists('acf_add_options_page') ) {
+
+      // Add Sub Page
+      acf_add_options_sub_page(array(
+        'page_title' 	=> 'Theme Einstellungen',
+        'menu_title' 	=> 'Einstellungen',
+        'parent_slug' 	=> 'fn_theme',
+        'menu_slug'  => 'theme',
+      ));
+
+    	// Add Sub Page
+    	acf_add_options_sub_page(array(
+    		'page_title' 	=> 'Unternehmen',
+    		'menu_title' 	=> 'Unternehmen',
+    		'parent_slug' 	=> 'fn_theme',
+        'menu_slug'  => 'unternehmen',
+    	));
+
+
+    }
+}
+add_action( 'admin_menu', 'fn_register_fn_settings' );
+
+/**
+ * Display a custom menu page
+ */
+function fn_theme_menu_page(){
+  ?><div id="fn-admin-content">
+    <header>
+      <div class="uk-flex uk-flex-middle" uk-grid>
+        <div class="uk-width-2-3">
+          <h3 class="uk-margin-remove">Willkommen</h3>
+          <h1 class="uk-margin-remove">firmennest Theme</h1>
+        </div>
+        <div class="uk-width-1-3 uk-text-right">
+          <a class="logo" target="_blank" rel="noopener" href="https://www.firmennest.de"><img src="<?php echo get_template_directory_uri() . '/assets/admin/firmennest_Logo.svg'; ?>" alt=""></a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <hr>
+
+      <hr>
+    </main>
+  </div><?php
+}
+
+function fn_theme_admin_css() {
+  $dirPath = get_template_directory() . '/assets/admin/css/';
+  $dirURL = get_template_directory_uri() . '/assets/admin/css/';
+  wp_enqueue_style( 'fn-theme-admin-css', $dirURL . 'main.css', array(), filemtime( $dirPath . 'main.css'), false);
+}
+
+function fn_admin_menu_icon_style() {
+  $dirPath = get_template_directory() . '/assets/admin/css/';
+  $dirURL = get_template_directory_uri() . '/assets/admin/css/';
+  wp_enqueue_style( 'fn-theme-admin-menu-icon-css', $dirURL . 'menu-icon.css', array(), filemtime( $dirPath . 'menu-icon.css'), false);
+}
+
+add_action('admin_enqueue_scripts', 'fn_admin_menu_icon_style');
 
 // Add fields to those pages
 // To edit these fields, use the import file in our cloud (firmennest/wordpress/acf-export...)
@@ -48,11 +166,11 @@ if( function_exists('acf_add_options_page') ) {
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
-	'key' => 'group_5aba39763fc30',
+	'key' => 'fn_key_group_theme_settings',
 	'title' => 'Theme-Einstellungen',
 	'fields' => array(
 		array(
-			'key' => 'field_5aba3983b6afa',
+			'key' => 'fn_key_tab_seo',
 			'label' => 'SEO',
 			'name' => '',
 			'type' => 'tab',
@@ -68,9 +186,9 @@ acf_add_local_field_group(array(
 			'endpoint' => 0,
 		),
 		array(
-			'key' => 'field_5aba39d7b6afb',
+			'key' => 'fn_key_seo_title',
 			'label' => 'Title',
-			'name' => 'seo_title',
+			'name' => 'fn_seo_title',
 			'type' => 'text',
 			'instructions' => '',
 			'required' => 0,
@@ -87,9 +205,9 @@ acf_add_local_field_group(array(
 			'maxlength' => '',
 		),
 		array(
-			'key' => 'field_5aba3a02b6afc',
+			'key' => 'fn_key_seo_desc',
 			'label' => 'Description',
-			'name' => 'seo_desc',
+			'name' => 'fn_seo_desc',
 			'type' => 'textarea',
 			'instructions' => '',
 			'required' => 0,
@@ -106,9 +224,9 @@ acf_add_local_field_group(array(
 			'new_lines' => '',
 		),
 		array(
-			'key' => 'field_5aba3a1bb6afd',
+			'key' => 'fn_key_seo_keywords',
 			'label' => 'Keywords',
-			'name' => 'seo_keywords',
+			'name' => 'fn_seo_keywords',
 			'type' => 'text',
 			'instructions' => '',
 			'required' => 0,
@@ -125,9 +243,9 @@ acf_add_local_field_group(array(
 			'maxlength' => '',
 		),
 		array(
-			'key' => 'field_5aba3a31b6afe',
+			'key' => 'fn_key_seo_analytics',
 			'label' => 'Analytics-ID',
-			'name' => 'seo_analytics',
+			'name' => 'fn_seo_analytics',
 			'type' => 'text',
 			'instructions' => '',
 			'required' => 0,
@@ -144,7 +262,7 @@ acf_add_local_field_group(array(
 			'maxlength' => '',
 		),
 		array(
-			'key' => 'field_5aba3a4bb6aff',
+			'key' => 'fn_key_tab_blog',
 			'label' => 'Blog',
 			'name' => '',
 			'type' => 'tab',
@@ -160,9 +278,9 @@ acf_add_local_field_group(array(
 			'endpoint' => 0,
 		),
 		array(
-			'key' => 'field_5aba3a63b6b00',
+			'key' => 'fn_key_blog_std_img',
 			'label' => 'Standard-Beitragsbild',
-			'name' => 'blog_std_img',
+			'name' => 'fn_blog_std_img',
 			'type' => 'image',
 			'instructions' => '',
 			'required' => 0,
@@ -184,7 +302,7 @@ acf_add_local_field_group(array(
 			'mime_types' => '',
 		),
 		array(
-			'key' => 'field_5ae2fcc5fd194',
+			'key' => 'fn_key_tab_404',
 			'label' => '404-Seite',
 			'name' => '',
 			'type' => 'tab',
@@ -200,9 +318,9 @@ acf_add_local_field_group(array(
 			'endpoint' => 0,
 		),
 		array(
-			'key' => 'field_5ae2fcecfd195',
+			'key' => 'fn_key_404_content',
 			'label' => 'Inhalt',
-			'name' => '404_inhalt',
+			'name' => 'fn_404_content',
 			'type' => 'wysiwyg',
 			'instructions' => '',
 			'required' => 0,
@@ -220,7 +338,7 @@ acf_add_local_field_group(array(
 			'delay' => 0,
 		),
 		array(
-			'key' => 'field_5b0813096b36e',
+			'key' => 'fn_key_tab_cookie',
 			'label' => 'Cookie-Hinweis',
 			'name' => '',
 			'type' => 'tab',
@@ -236,9 +354,9 @@ acf_add_local_field_group(array(
 			'endpoint' => 0,
 		),
 		array(
-			'key' => 'field_5b0813226b36f',
+			'key' => 'fn_key_cookie_text',
 			'label' => 'Textmeldung',
-			'name' => 'cookie_text',
+			'name' => 'fn_cookie_text',
 			'type' => 'textarea',
 			'instructions' => '',
 			'required' => 0,
@@ -255,9 +373,9 @@ acf_add_local_field_group(array(
 			'new_lines' => '',
 		),
 		array(
-			'key' => 'field_5b0815766b370',
+			'key' => 'fn_key_cookie_bool',
 			'label' => 'Aktiv?',
-			'name' => 'cookie_aktiv',
+			'name' => 'fn_cookie_bool',
 			'type' => 'true_false',
 			'instructions' => '',
 			'required' => 0,
@@ -274,9 +392,9 @@ acf_add_local_field_group(array(
 			'ui_off_text' => '',
 		),
 		array(
-			'key' => 'field_5b08159b6b371',
+			'key' => 'fn_key_cookie_link',
 			'label' => 'Link',
-			'name' => 'cookie_link',
+			'name' => 'fn_cookie_link',
 			'type' => 'page_link',
 			'instructions' => '',
 			'required' => 0,
@@ -289,16 +407,15 @@ acf_add_local_field_group(array(
 			'post_type' => array(
 				0 => 'page',
 			),
-			'taxonomy' => array(
-			),
+			'taxonomy' => '',
 			'allow_null' => 0,
 			'allow_archives' => 0,
 			'multiple' => 0,
 		),
 		array(
-			'key' => 'field_5b0818ab6b372',
+			'key' => 'fn_key_cookie_button',
 			'label' => 'Button-Text',
-			'name' => 'cookie_button',
+			'name' => 'fn_cookie_button',
 			'type' => 'text',
 			'instructions' => '',
 			'required' => 0,
@@ -330,20 +447,20 @@ acf_add_local_field_group(array(
 	'label_placement' => 'top',
 	'instruction_placement' => 'label',
 	'hide_on_screen' => '',
-	'active' => 1,
+	'active' => true,
 	'description' => '',
 ));
 
 acf_add_local_field_group(array(
-	'key' => 'group_598d5bca6dda6',
+	'key' => 'fn_key_group_company',
 	'title' => 'Unternehmensinformationen',
 	'fields' => array(
 		array(
-			'key' => 'field_598d6f037a92f',
+			'key' => 'fn_key_company_logo',
 			'label' => 'Logo',
-			'name' => 'company_logo',
+			'name' => 'fn_company_logo',
 			'type' => 'image',
-			'instructions' => 'Optimale Größe: 151x151',
+			'instructions' => '',
 			'required' => 0,
 			'conditional_logic' => array(
 				array(
@@ -371,11 +488,11 @@ acf_add_local_field_group(array(
 			'mime_types' => 'jpg, png, svg',
 		),
 		array(
-			'key' => 'field_598db0fa1cef7',
-			'label' => 'Gebäude',
-			'name' => 'company_image',
+			'key' => 'fn_key_company_logo_inverted',
+			'label' => 'Logo (Invertiert)',
+			'name' => 'fn_company_logo_inverted',
 			'type' => 'image',
-			'instructions' => 'Optimale Größe: 200x200',
+			'instructions' => '',
 			'required' => 0,
 			'conditional_logic' => array(
 				array(
@@ -392,7 +509,7 @@ acf_add_local_field_group(array(
 				'id' => '',
 			),
 			'return_format' => 'url',
-			'preview_size' => 'schema_company_image',
+			'preview_size' => 'thumbnail',
 			'library' => 'uploadedTo',
 			'min_width' => '',
 			'min_height' => '',
@@ -403,37 +520,7 @@ acf_add_local_field_group(array(
 			'mime_types' => 'jpg, png',
 		),
 		array(
-			'key' => 'field_598d75e8b22e6',
-			'label' => 'Schema Typ',
-			'name' => 'schema_type',
-			'type' => 'select',
-			'instructions' => 'Wähle, welche Art von strukturierten Daten du hier pflegen möchtest.',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '30',
-				'class' => '',
-				'id' => '',
-			),
-			'choices' => array(
-				'Organisation' => 'Organisation',
-				'Store' => 'Store',
-				'LocalBusiness' => 'Lokales Unternehmen',
-				'Person' => 'Person',
-				'Restaurant' => 'Restaurant',
-			),
-			'default_value' => array(
-				0 => 'LocalBusiness',
-			),
-			'allow_null' => 0,
-			'multiple' => 0,
-			'ui' => 1,
-			'ajax' => 0,
-			'return_format' => 'value',
-			'placeholder' => '',
-		),
-		array(
-			'key' => 'field_598d5fe753374',
+			'key' => 'fn_key_tab_address',
 			'label' => 'Adresse',
 			'name' => '',
 			'type' => 'tab',
@@ -449,9 +536,9 @@ acf_add_local_field_group(array(
 			'endpoint' => 0,
 		),
 		array(
-			'key' => 'field_5ab53b30ce0ca1',
-			'label' => 'Firmenname',
-			'name' => 'company_name',
+			'key' => 'fn_key_company_name',
+			'label' => 'Name',
+			'name' => 'fn_company_name',
 			'type' => 'text',
 			'instructions' => '',
 			'required' => 0,
@@ -468,34 +555,15 @@ acf_add_local_field_group(array(
 			'maxlength' => '',
 		),
 		array(
-			'key' => 'field_5ab53b30ce0ca',
-			'label' => 'Inhaber',
-			'name' => 'company_owner',
-			'type' => 'text',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '50',
-				'class' => '',
-				'id' => '',
-			),
-			'default_value' => '',
-			'placeholder' => '',
-			'prepend' => '',
-			'append' => '',
-			'maxlength' => '',
-		),
-		array(
-			'key' => 'field_598d5bfc3cc2a',
+			'key' => 'fn_key_address_street',
 			'label' => 'Straße',
-			'name' => 'address_street',
+			'name' => 'fn_address_street',
 			'type' => 'text',
 			'instructions' => '',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
-				'width' => '25',
+				'width' => '50',
 				'class' => '',
 				'id' => '',
 			),
@@ -506,15 +574,15 @@ acf_add_local_field_group(array(
 			'maxlength' => '',
 		),
 		array(
-			'key' => 'field_598d5c233cc2b',
+			'key' => 'fn_key_address_postal',
 			'label' => 'PLZ',
-			'name' => 'address_postal',
+			'name' => 'fn_address_postal',
 			'type' => 'text',
 			'instructions' => '',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
-				'width' => '25',
+				'width' => '30',
 				'class' => '',
 				'id' => '',
 			),
@@ -525,15 +593,15 @@ acf_add_local_field_group(array(
 			'maxlength' => '',
 		),
 		array(
-			'key' => 'field_598d5c933cc2c',
+			'key' => 'fn_key_address_city',
 			'label' => 'Stadt',
-			'name' => 'address_city',
+			'name' => 'fn_address_city',
 			'type' => 'text',
 			'instructions' => '',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
-				'width' => '25',
+				'width' => '35',
 				'class' => '',
 				'id' => '',
 			),
@@ -544,15 +612,15 @@ acf_add_local_field_group(array(
 			'maxlength' => '',
 		),
 		array(
-			'key' => 'field_598d793f20d4a',
+			'key' => 'fn_key_address_country',
 			'label' => 'Land',
-			'name' => 'address_country',
+			'name' => 'fn_address_country',
 			'type' => 'text',
 			'instructions' => '',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
-				'width' => '25',
+				'width' => '35',
 				'class' => '',
 				'id' => '',
 			),
@@ -563,15 +631,15 @@ acf_add_local_field_group(array(
 			'maxlength' => '',
 		),
 		array(
-			'key' => 'field_5ab53073b8616',
+			'key' => 'fn_key_company_mail',
 			'label' => 'Mail',
-			'name' => 'company_mail',
+			'name' => 'fn_company_mail',
 			'type' => 'text',
 			'instructions' => '',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
-				'width' => '25',
+				'width' => '40',
 				'class' => '',
 				'id' => '',
 			),
@@ -582,34 +650,15 @@ acf_add_local_field_group(array(
 			'maxlength' => '',
 		),
 		array(
-			'key' => 'field_5ab532073b8616',
-			'label' => 'Mobil',
-			'name' => 'company_mobile',
-			'type' => 'text',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '25',
-				'class' => '',
-				'id' => '',
-			),
-			'default_value' => '',
-			'placeholder' => '',
-			'prepend' => '',
-			'append' => '',
-			'maxlength' => '',
-		),
-		array(
-			'key' => 'field_598da40b04a1e',
+			'key' => 'fn_key_company_phone',
 			'label' => 'Telefon',
-			'name' => 'company_phone',
+			'name' => 'fn_company_phone',
 			'type' => 'text',
 			'instructions' => '',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
-				'width' => '25',
+				'width' => '30',
 				'class' => '',
 				'id' => '',
 			),
@@ -620,15 +669,15 @@ acf_add_local_field_group(array(
 			'maxlength' => '',
 		),
 		array(
-			'key' => 'field_5ab53a3bd7533',
+			'key' => 'fn_key_company_fax',
 			'label' => 'Fax',
-			'name' => 'company_fax',
+			'name' => 'fn_company_fax',
 			'type' => 'text',
 			'instructions' => '',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
-				'width' => '25',
+				'width' => '30',
 				'class' => '',
 				'id' => '',
 			),
@@ -639,277 +688,7 @@ acf_add_local_field_group(array(
 			'maxlength' => '',
 		),
 		array(
-			'key' => 'field_598d600553375',
-			'label' => 'Öffnungszeiten',
-			'name' => '',
-			'type' => 'tab',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => array(
-				array(
-					array(
-						'field' => 'field_598d75e8b22e6',
-						'operator' => '!=',
-						'value' => 'Organisation',
-					),
-					array(
-						'field' => 'field_598d75e8b22e6',
-						'operator' => '!=',
-						'value' => 'Person',
-					),
-				),
-			),
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'placement' => 'top',
-			'endpoint' => 0,
-		),
-		array(
-			'key' => 'field_598d63d35337c',
-			'label' => 'Öffnungszeiten',
-			'name' => 'opening_hours',
-			'type' => 'repeater',
-			'instructions' => 'Täglich geöffnet: 00:00–23:59',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'collapsed' => 'field_598d63f15337d',
-			'min' => 0,
-			'max' => 7,
-			'layout' => 'table',
-			'button_label' => 'Tag hinzufügen',
-			'sub_fields' => array(
-				array(
-					'key' => 'field_598d63f15337d',
-					'label' => 'Tage',
-					'name' => 'days',
-					'type' => 'select',
-					'instructions' => '',
-					'required' => 0,
-					'conditional_logic' => 0,
-					'wrapper' => array(
-						'width' => '40',
-						'class' => '',
-						'id' => '',
-					),
-					'choices' => array(
-						'Mo' => 'Mo',
-						'Tu' => 'Di',
-						'We' => 'Mi',
-						'Th' => 'Do',
-						'Fr' => 'Fr',
-						'Sa' => 'Sa',
-						'Su' => 'So',
-					),
-					'default_value' => array(
-					),
-					'allow_null' => 0,
-					'multiple' => 1,
-					'ui' => 1,
-					'ajax' => 0,
-					'return_format' => 'value',
-					'placeholder' => '',
-				),
-				array(
-					'key' => 'field_598d64205337e',
-					'label' => 'Von',
-					'name' => 'from',
-					'type' => 'time_picker',
-					'instructions' => '',
-					'required' => 0,
-					'conditional_logic' => array(
-						array(
-							array(
-								'field' => 'field_598d96b160bcc',
-								'operator' => '!=',
-								'value' => '1',
-							),
-						),
-					),
-					'wrapper' => array(
-						'width' => '20',
-						'class' => '',
-						'id' => '',
-					),
-					'display_format' => 'H:i',
-					'return_format' => 'H:i',
-				),
-				array(
-					'key' => 'field_598d64bd59579',
-					'label' => 'bis',
-					'name' => 'to',
-					'type' => 'time_picker',
-					'instructions' => '',
-					'required' => 0,
-					'conditional_logic' => array(
-						array(
-							array(
-								'field' => 'field_598d96b160bcc',
-								'operator' => '!=',
-								'value' => '1',
-							),
-						),
-					),
-					'wrapper' => array(
-						'width' => '20',
-						'class' => '',
-						'id' => '',
-					),
-					'display_format' => 'H:i',
-					'return_format' => 'H:i',
-				),
-				array(
-					'key' => 'field_598d96b160bcc',
-					'label' => 'Geschlossen',
-					'name' => 'closed',
-					'type' => 'true_false',
-					'instructions' => '',
-					'required' => 0,
-					'conditional_logic' => 0,
-					'wrapper' => array(
-						'width' => '20',
-						'class' => '',
-						'id' => '',
-					),
-					'message' => '',
-					'default_value' => 0,
-					'ui' => 1,
-					'ui_on_text' => '',
-					'ui_off_text' => '',
-				),
-			),
-		),
-		array(
-			'key' => 'field_598d6692d5ea5',
-			'label' => 'Sonderöffnungs- oder -schließzeiten',
-			'name' => 'special_days',
-			'type' => 'repeater',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'collapsed' => '',
-			'min' => 0,
-			'max' => 0,
-			'layout' => 'table',
-			'button_label' => 'Add Date',
-			'sub_fields' => array(
-				array(
-					'key' => 'field_598d6692d5ea7',
-					'label' => 'Datum: von',
-					'name' => 'date_from',
-					'type' => 'date_picker',
-					'instructions' => '',
-					'required' => 0,
-					'conditional_logic' => 0,
-					'wrapper' => array(
-						'width' => '20',
-						'class' => '',
-						'id' => '',
-					),
-					'display_format' => 'd.m.Y',
-					'return_format' => 'Y-m-d',
-					'first_day' => 1,
-				),
-				array(
-					'key' => 'field_598d9b07ccb41',
-					'label' => 'Datum: bis',
-					'name' => 'date_to',
-					'type' => 'date_picker',
-					'instructions' => '',
-					'required' => 0,
-					'conditional_logic' => 0,
-					'wrapper' => array(
-						'width' => '20',
-						'class' => '',
-						'id' => '',
-					),
-					'display_format' => 'd.m.Y',
-					'return_format' => 'Y-m-d',
-					'first_day' => 1,
-				),
-				array(
-					'key' => 'field_598d9b14ccb42',
-					'label' => 'Zeit: von',
-					'name' => 'time_from',
-					'type' => 'time_picker',
-					'instructions' => '',
-					'required' => 0,
-					'conditional_logic' => array(
-						array(
-							array(
-								'field' => 'field_598d9b53ccb43',
-								'operator' => '!=',
-								'value' => '1',
-							),
-						),
-					),
-					'wrapper' => array(
-						'width' => '20',
-						'class' => '',
-						'id' => '',
-					),
-					'display_format' => 'H:i',
-					'return_format' => 'H:i',
-				),
-				array(
-					'key' => 'field_598d6692d5ea8',
-					'label' => 'Zeit bis',
-					'name' => 'time_to',
-					'type' => 'time_picker',
-					'instructions' => '',
-					'required' => 0,
-					'conditional_logic' => array(
-						array(
-							array(
-								'field' => 'field_598d9b53ccb43',
-								'operator' => '!=',
-								'value' => '1',
-							),
-						),
-					),
-					'wrapper' => array(
-						'width' => '20',
-						'class' => '',
-						'id' => '',
-					),
-					'display_format' => 'H:i',
-					'return_format' => 'H:i',
-				),
-				array(
-					'key' => 'field_598d9b53ccb43',
-					'label' => 'Geschlossen?',
-					'name' => 'closed',
-					'type' => 'true_false',
-					'instructions' => '',
-					'required' => 0,
-					'conditional_logic' => 0,
-					'wrapper' => array(
-						'width' => '20',
-						'class' => '',
-						'id' => '',
-					),
-					'message' => '',
-					'default_value' => 0,
-					'ui' => 1,
-					'ui_on_text' => 'Ja',
-					'ui_off_text' => 'Nein',
-				),
-			),
-		),
-		array(
-			'key' => 'field_598d6cb0f5324',
+			'key' => 'fn_key_tab_social',
 			'label' => 'Social Media',
 			'name' => '',
 			'type' => 'tab',
@@ -925,9 +704,9 @@ acf_add_local_field_group(array(
 			'endpoint' => 0,
 		),
 		array(
-			'key' => 'field_5aba300134fc1',
+			'key' => 'fn_key_social_facebook',
 			'label' => 'Facebook',
-			'name' => 'social_facebook',
+			'name' => 'fn_social_facebook',
 			'type' => 'url',
 			'instructions' => '',
 			'required' => 0,
@@ -941,9 +720,9 @@ acf_add_local_field_group(array(
 			'placeholder' => '',
 		),
 		array(
-			'key' => 'field_5aba302b34fc2',
+			'key' => 'fn_key_social_twitter',
 			'label' => 'Twitter',
-			'name' => 'social_twitter',
+			'name' => 'fn_social_twitter',
 			'type' => 'url',
 			'instructions' => '',
 			'required' => 0,
@@ -957,9 +736,9 @@ acf_add_local_field_group(array(
 			'placeholder' => '',
 		),
 		array(
-			'key' => 'field_5aba303634fc3',
+			'key' => 'fn_key_social_instagram',
 			'label' => 'Instagram',
-			'name' => 'social_instagram',
+			'name' => 'fn_social_instagram',
 			'type' => 'url',
 			'instructions' => '',
 			'required' => 0,
@@ -973,9 +752,9 @@ acf_add_local_field_group(array(
 			'placeholder' => '',
 		),
 		array(
-			'key' => 'field_5aba304234fc4',
+			'key' => 'fn_key_social_pinterest',
 			'label' => 'Pinterest',
-			'name' => 'social_pinterest',
+			'name' => 'fn_social_pinterest',
 			'type' => 'url',
 			'instructions' => '',
 			'required' => 0,
@@ -989,9 +768,9 @@ acf_add_local_field_group(array(
 			'placeholder' => '',
 		),
 		array(
-			'key' => 'field_5aba306d34fc7',
+			'key' => 'fn_key_social_youtube',
 			'label' => 'YouTube',
-			'name' => 'social_youtube',
+			'name' => 'fn_social_youtube',
 			'type' => 'url',
 			'instructions' => '',
 			'required' => 0,
@@ -1005,9 +784,25 @@ acf_add_local_field_group(array(
 			'placeholder' => '',
 		),
 		array(
-			'key' => 'field_5aba305334fc5',
+			'key' => 'fn_key_social_googleplus',
+			'label' => 'Google+',
+			'name' => 'fn_social_googleplus',
+			'type' => 'url',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+		),
+		array(
+			'key' => 'fn_key_social_xing',
 			'label' => 'Xing',
-			'name' => 'social_xing',
+			'name' => 'fn_social_xing',
 			'type' => 'url',
 			'instructions' => '',
 			'required' => 0,
@@ -1021,9 +816,9 @@ acf_add_local_field_group(array(
 			'placeholder' => '',
 		),
 		array(
-			'key' => 'field_5aba306034fc6',
-			'label' => 'LinkedIn',
-			'name' => 'social_linkedin',
+			'key' => 'fn_key_social_linkedin',
+			'label' => 'Linkedin',
+			'name' => 'fn_social_linkedin',
 			'type' => 'url',
 			'instructions' => '',
 			'required' => 0,
@@ -1052,7 +847,7 @@ acf_add_local_field_group(array(
 	'label_placement' => 'top',
 	'instruction_placement' => 'label',
 	'hide_on_screen' => '',
-	'active' => 1,
+	'active' => true,
 	'description' => '',
 ));
 

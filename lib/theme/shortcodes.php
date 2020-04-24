@@ -7,7 +7,7 @@ function fn_option_logo()
 {
   ob_start();
 
-  $logo = get_field('company_logo', 'option');
+  $logo = get_field('fn_company_logo', 'option');
   $logo_src = wp_get_attachment_image_src( $logo , '' );
   $logo_url = $logo_src[0];
 
@@ -23,7 +23,7 @@ function fn_option_name()
 {
   ob_start();
 
-  echo the_field('company_name', 'option');
+  echo the_field('fn_company_name', 'option');
 
   return ob_get_clean();
 }
@@ -35,7 +35,7 @@ function fn_option_owner()
 {
   ob_start();
 
-  echo the_field('company_owner', 'option');
+  echo the_field('fn_company_owner', 'option');
 
   return ob_get_clean();
 }
@@ -47,7 +47,7 @@ function fn_option_strasse()
 {
   ob_start();
 
-  echo the_field('address_street', 'option');
+  echo the_field('fn_address_street', 'option');
 
   return ob_get_clean();
 }
@@ -59,8 +59,8 @@ function fn_option_city()
 {
   ob_start();
 
-  $postal = get_field('address_postal', 'option');
-  $city = get_field('address_city', 'option');
+  $postal = get_field('fn_address_postal', 'option');
+  $city = get_field('fn_address_city', 'option');
 
   echo $postal . ' ' . $city;
 
@@ -74,7 +74,7 @@ function fn_option_tel()
 {
   ob_start();
 
-  echo get_field('company_phone', 'option');
+  echo get_field('fn_company_phone', 'option');
 
   return ob_get_clean();
 }
@@ -86,7 +86,7 @@ function fn_option_mobile()
 {
   ob_start();
 
-  echo get_field('company_mobile', 'option');
+  echo get_field('fn_company_mobile', 'option');
 
   return ob_get_clean();
 }
@@ -98,7 +98,7 @@ function fn_option_fax()
 {
   ob_start();
 
-  echo get_field('company_fax', 'option');
+  echo get_field('fn_company_fax', 'option');
 
   return ob_get_clean();
 }
@@ -110,7 +110,7 @@ function fn_option_mail()
 {
   ob_start();
 
-  $mail = get_field('company_mail', 'option');
+  $mail = get_field('fn_company_mail', 'option');
   echo '<a href="mailto:' . antispambot( $mail ) . '">' . antispambot( $mail ) . '</a>';
 
   return ob_get_clean();
@@ -123,7 +123,7 @@ function fn_option_country()
 {
   ob_start();
 
-  echo get_field('address_country', 'option');
+  echo get_field('fn_address_country', 'option');
 
   return ob_get_clean();
 }

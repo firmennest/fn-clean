@@ -1,2 +1,119 @@
-.blog {
+.fn-blog, .fn-posts {
+  .article-text{
+    a:not(.uk-button):not(.wp-block-button__link){
+      color: @primary-color;
+      font-weight: bolder;
+    }
+    .wp-block-table table{
+      .uk-table;
+      > tr:nth-of-type(odd),
+      tbody tr:nth-of-type(odd) {
+        background: @table-striped-row-background;
+        .hook-table-striped;
+
+      }
+      td{
+        padding: 6px;
+      }
+      p{
+        &:last-child{
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .article-meta{
+    color: @grey;
+    a{
+      color: inherit;
+      &:hover{
+        text-decoration: none;
+        color: @darkgrey;
+      }
+    }
+    [class^=fa]{
+      color: @primary-color;
+    }
+  }
+  .fn-blog-posts, .fn-posts-panel{
+    .fn-image{
+      display: block;
+      height: 250px;
+      overflow: hidden;
+
+      @media(max-width: 639px){
+        height: 200px;
+      }
+      img{
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+    article{
+      &:not(:last-child){
+        margin-bottom: 45px;
+      }
+      @media(max-width: 639px){
+        background-color: @w;
+        .uk-box-shadow-medium;
+        > [uk-grid]{
+          margin: 0;
+          > div{
+            padding-left: 0;
+          }
+        }
+        &:hover{
+          box-shadow: 0 5px 15px fade(@primary-color, 50%);
+        }
+        .article-content{
+          .uk-padding !important;
+          margin: 0;
+        }
+        &:not(:last-child){
+          margin-bottom: 30px;
+        }
+        .fn-image{
+          height: 200px;
+        }
+      }
+    }
+  }
+  .fn-posts-panel{
+    &:hover{
+      box-shadow: 0 5px 15px fade(@primary-color, 50%);
+    }
+  }
+  #sidebar{
+    ul{
+      li{
+        a{
+          color: @primary-color;
+        }
+      }
+    }
+  }
+  ul.page-numbers{
+    .uk-pagination;
+    .uk-flex-center;
+    > li{
+      &:not(:last-child){
+        margin-right: 1px;
+      }
+      > *{
+        display: block;
+        background-color: @verylightgrey;
+        padding: 10px 20px;
+        text-align: center;
+        font-weight: bolder;
+      }
+      > a:hover{
+        text-decoration: none;
+        color: @primary-color;
+      }
+      span.page-numbers.current{
+        color: @primary-color;
+      }
+    }
+  }
 }

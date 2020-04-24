@@ -19,3 +19,6 @@ require_once('shortcodes.php');
 
 /** Content **/
 require_once('content.php');
+
+/** Comments **/
+require_once('comments.php');

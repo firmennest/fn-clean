@@ -1,21 +1,14 @@
-<?php get_header() ?>
+<?php get_header();
 
-<div class="uk-width-1-1">
-  <div class="uk-container fn-content uk-padding-large">
-  <?php
+?><main>
+  <div class="uk-container fn-content"><?php
     if ( have_posts() ) {
       while ( have_posts() ) {
+        the_post();
+        the_content();
+      }
+    }
+  ?></div>
+</main><?php
 
-      the_post();
-
-      //
-      the_content();
-
-      //
-      } // end while
-    } // end if
-  ?>
-  </div>
-</div>
-
-<?php get_footer() ?>
+get_footer();

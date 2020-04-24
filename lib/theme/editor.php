@@ -1,19 +1,27 @@
 <?php
 
+add_action( 'enqueue_block_editor_assets', 'fn_add_gutenberg_assets' );
+function fn_add_gutenberg_assets() {
+	wp_enqueue_style( 'fn-gutenberg-styles', get_theme_file_uri( '/assets/theme/css/block-editor.css' ), false );
+}
+
 // Editor Styles
 
-add_editor_style( 'assets/theme/css/editor.css' );
+function fn_theme_add_editor_styles() {
+  add_editor_style( get_template_directory_uri() . '/assets/theme/css/editor.css' );
+}
+add_action( 'admin_init', 'fn_theme_add_editor_styles' );
 
 // Custom Editor Classes & Settings
 
-function wpb_mce_buttons_2($buttons) {
+function fn_mce_buttons_2($buttons) {
   array_unshift($buttons, 'styleselect');
   return $buttons;
 }
 
-add_filter('mce_buttons_2', 'wpb_mce_buttons_2');
+add_filter('mce_buttons_2', 'fn_mce_buttons_2');
 
-function my_mce_before_init_insert_formats( $init_array ) {
+function fn_mce_before_init_insert_formats( $init_array ) {
 
   // Define the style_formats array
 
@@ -39,6 +47,12 @@ function my_mce_before_init_insert_formats( $init_array ) {
       'title' => 'Button',
       'inline' => 'a',
       'classes' => 'uk-button uk-button-primary',
+      'selector' => 'a',
+    ),
+		array(
+      'title' => 'Text-Button',
+      'inline' => 'a',
+      'classes' => 'uk-button uk-button-text',
       'selector' => 'a',
     ),
     array(
@@ -74,4 +88,4 @@ function my_mce_before_init_insert_formats( $init_array ) {
   return $init_array;
 }
 // Attach callback to 'tiny_mce_before_init'
-add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' );
+add_filter( 'tiny_mce_before_init', 'fn_mce_before_init_insert_formats' );

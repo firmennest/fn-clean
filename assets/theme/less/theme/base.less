@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+body{
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
 // Headlines
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -63,12 +68,37 @@ a {
 // Buttons
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-.uk-button-default {
-  background: none;
-  border: 1px solid @txt;
-  &:hover {
-    background: @txt;
-    color: @w;
+.uk-button{
+  font-family: @base-heading-font-family;
+  font-weight: 500;
+  border-radius: 25px;
+  text-transform: uppercase;
+  line-height: initial;
+  padding: 12px 30px 8px;
+
+  &.uk-button-default {
+    background: none;
+    border: 1px solid @txt;
+    &:hover {
+      background: @txt;
+      color: @w;
+    }
+  }
+
+  &.uk-button-text{
+    color: @primary-color;
+    padding-left: 0;
+    padding-right: 20px;
+    position: relative;
+    &::after{
+      content: @fa-var-arrow-right;
+      .fal;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      font-size: @global-small-font-size;
+    }
   }
 }
 
@@ -87,7 +117,7 @@ a {
 // Uikit
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-[class*=uk-column-] {
+[class*=uk-column-]{
   h1,
   h2,
   h3,
@@ -95,9 +125,9 @@ a {
   .uk-h2,
   .uk-h3 {
     column-span: all;
-    text-align: center;
   }
-  p {
-    margin: 0;
+  p{
+    break-inside: avoid-column;
+    page-break-inside: avoid;
   }
 }

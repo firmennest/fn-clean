@@ -1,0 +1,118 @@
+// HTML, Body
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+#fn-admin-content{
+  background-color: @w;
+  padding: 30px 60px;
+  margin: 20px 20px 0 0;
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    word-wrap: break-word;
+    hyphens: auto;
+    box-sizing: border-box;
+    outline: none !important;
+
+    &:focus{
+      box-shadow: none;
+      color: none;
+    }
+  }
+  header{
+    padding: 15px 0;
+    background-color: @w;
+    img{
+      max-width: 200px;
+    }
+  }
+  main{
+
+  }
+  // Headlines
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  .uk-h1,
+  .uk-h2,
+  .uk-h3,
+  .uk-h4,
+  .uk-h5,
+  .uk-h6 {
+    display: block;
+  }
+
+  h1,
+  .uk-h1 {
+  }
+
+  h2,
+  .uk-h2 {
+  }
+
+  h3,
+  .uk-h3 {
+    font-weight: 400;
+    color: @primary-color;
+  }
+
+  h4,
+  .uk-h4 {
+  }
+
+  h5,
+  .uk-h5 {
+  }
+
+  h6,
+  .uk-h6 {
+  }
+
+  // Misc. Typo
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  a {
+    transition: @base-transition;
+  }
+
+  // Classes
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+  // Buttons
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  .uk-button-default {
+    background: none;
+    border: 1px solid @txt;
+    &:hover {
+      background: @txt;
+      color: @w;
+    }
+  }
+
+  .uk-light {
+    .uk-button-default {
+      background: none;
+      border: 1px solid @w;
+      color: @w;
+      &:hover {
+        background: @w;
+        color: @txt;
+      }
+    }
+  }
+
+  // Uikit
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+[id^=fn_adv_rev_rating_box]{
+  .inside{
+    margin-top: 0;
+    padding: 0;
+
+    input{
+      .uk-input;
+    }
+  }
+}

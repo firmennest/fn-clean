@@ -1,0 +1,407 @@
+// V A R I A B L E N
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@w:                                             #FFFFFF;
+@verylightgrey:                                 #F5F5F5;
+@lightgrey:                                     #DDDDDD;
+@grey:                                          #9B9B9B;
+@darkgrey:                                      #4A4A4A;
+@black:                                         #000000;
+
+@primary-color:                                 #1c497a;
+@primary-color-hover:                           #153659;
+@secondary-color:                               #FFA033;
+@secondary-color-hover:                         #FF8800;
+
+@txt:                                           @darkgrey;
+
+@global-font-weight:                            300;
+
+@base-transition:                               all 0.3s ease-in-out;
+
+// G L O B A L
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//
+// Typography
+//
+
+@global-font-family:                            'Montserrat' ,-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+@global-font-size:                              18px;
+@global-line-height:                            1.4;
+
+@global-xxlarge-font-size:                      36px;
+@global-xlarge-font-size:                       30px;
+@global-large-font-size:                        24px;
+@global-medium-font-size:                       20px;
+@global-small-font-size:                        14px;
+
+//
+// Colors
+//
+
+@global-color:                                  @txt;
+@global-emphasis-color:                         @txt;
+@global-muted-color:                            @grey;
+
+@global-link-color:                             @txt;
+@global-link-hover-color:                       @txt;
+
+@global-inverse-color:                          @w;
+
+//
+// Backgrounds
+//
+
+@global-background:                             @w;
+
+@global-muted-background:                       @verylightgrey;
+@global-primary-background:                     @primary-color;
+@global-secondary-background:                   @secondary-color;
+
+@global-success-background:                     #32d296;
+@global-warning-background:                     #faa05a;
+@global-danger-background:                      #f0506e;
+
+//
+// Borders
+//
+
+@global-border-width:                           1px;
+@global-border:                                 @lightgrey;
+
+//
+// Box-Shadows
+//
+
+@global-small-box-shadow:                       0 2px 8px rgba(0,0,0,0.08);
+@global-medium-box-shadow:                      0 5px 15px rgba(0,0,0,0.08);
+@global-large-box-shadow:                       0 14px 25px rgba(0,0,0,0.16);
+@global-xlarge-box-shadow:                      0 28px 50px rgba(0,0,0,0.16);
+
+//
+// Spacings
+//
+
+// Used in margin, section, list
+@global-margin:                                 20px;
+@global-small-margin:                           10px;
+@global-medium-margin:                          40px;
+@global-large-margin:                           70px;
+@global-xlarge-margin:                          140px;
+
+// Used in grid, column, container, align, card, padding
+@global-gutter:                                 30px;
+@global-small-gutter:                           15px;
+@global-medium-gutter:                          40px;
+@global-large-gutter:                           70px;
+
+//
+// Container
+//
+
+@container-max-width:                           1200px;
+@container-small-max-width:                     900px;
+@container-large-max-width:                     1600px;
+
+@container-padding-horizontal:                  15px;
+@container-padding-horizontal-s:                @global-gutter;
+@container-padding-horizontal-m:                @global-medium-gutter;
+
+//
+// Controls
+//
+
+@global-control-height:                         40px;
+@global-control-small-height:                   30px;
+@global-control-large-height:                   55px;
+
+//
+// Z-index
+//
+
+@global-z-index:                                1000;
+
+
+
+// B A S E
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@base-body-background:                          @global-background;
+@base-body-font-family:                         @global-font-family;
+@base-body-font-weight:                         300;
+@base-body-font-size:                           @global-font-size;
+@base-body-line-height:                         @global-line-height;
+@base-body-color:                               @global-color;
+
+@base-link-color:                               @global-link-color;
+@base-link-text-decoration:                     none;
+@base-link-hover-color:                         @global-link-hover-color;
+@base-link-hover-text-decoration:               underline;
+
+@base-strong-font-weight:                       700;
+@base-code-font-size:                           @global-small-font-size;
+@base-code-font-family:                         Consolas, monaco, monospace;
+@base-code-color:                               @global-danger-background;
+@base-em-color:                                 @global-danger-background;
+@base-ins-background:                           #ffd;
+@base-ins-color:                                @global-color;
+@base-mark-background:                          #ffd;
+@base-mark-color:                               @global-color;
+@base-quote-font-style:                         italic;
+@base-small-font-size:                          80%;
+
+@base-margin-vertical:                          @global-margin;
+
+@base-heading-font-family:                      @global-font-family;
+@base-heading-font-weight:                      700;
+@base-heading-color:                            @global-color;
+@base-heading-text-transform:                   none;
+@base-heading-margin-top:                       @global-medium-margin;
+@base-h1-font-size:                             @global-xxlarge-font-size;
+@base-h1-line-height:                           1.2;
+@base-h2-font-size:                             @global-xlarge-font-size;
+@base-h2-line-height:                           1.3;
+@base-h3-font-size:                             @global-large-font-size;
+@base-h3-line-height:                           1.4;
+@base-h4-font-size:                             @global-medium-font-size;
+@base-h4-line-height:                           1.4;
+@base-h5-font-size:                             @global-font-size;
+@base-h5-line-height:                           1.4;
+@base-h6-font-size:                             @global-small-font-size;
+@base-h6-line-height:                           1.4;
+
+@base-list-padding-left:                        30px;
+
+@base-hr-margin-vertical:                       @global-margin;
+@base-hr-border-width:                          @global-border-width;
+@base-hr-border:                                @global-border;
+
+@base-blockquote-font-size:                     @global-medium-font-size;
+@base-blockquote-line-height:                   1.5;
+@base-blockquote-font-style:                    italic;
+@base-blockquote-margin-vertical:               @global-margin;
+@base-blockquote-footer-margin-top:             @global-small-margin;
+@base-blockquote-footer-font-size:              @global-small-font-size;
+@base-blockquote-footer-line-height:            1.5;
+
+@base-pre-font-size:                            @global-small-font-size;
+@base-pre-line-height:                          1.5;
+@base-pre-font-family:                          @base-code-font-family;
+@base-pre-color:                                @global-color;
+
+@base-selection-background:                     @primary-color;
+@base-selection-color:                          @global-inverse-color;
+
+// Breakpoints
+// ========================================================================
+
+// Phone Portrait:   Galaxy (360x640), iPhone 6 (375x667), iPhone 6+ (414x736)
+// Phone Landscape:  Galaxy (640x360), iPhone 6 (667x375), iPhone 6+ (736x414)
+// Tablet Portrait:  iPad (768x1024), Galaxy Tab (800x1280),
+// Tablet Landscape: iPad (1024x768), iPad Pro (1024x1366),
+// Desktop:          Galaxy Tab (1280x800), iPad Pro (1366x1024)
+
+@breakpoint-small:                             640px;  // Phone landscape
+@breakpoint-medium:                            960px;  // Tablet Landscape
+@breakpoint-large:                             1200px; // Desktop
+@breakpoint-xlarge:                            1600px; // Large Screens
+
+@breakpoint-xsmall-max:                        (@breakpoint-small - 1);
+@breakpoint-small-max:                         (@breakpoint-medium - 1);
+@breakpoint-medium-max:                        (@breakpoint-large - 1);
+@breakpoint-large-max:                         (@breakpoint-xlarge - 1);
+
+
+
+// B U T T O N
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@button-line-height:                            @global-control-height;
+@button-small-line-height:                      @global-control-small-height;
+@button-large-line-height:                      @global-control-large-height;
+
+@button-font-size:                              @global-font-size;
+@button-small-font-size:                        @global-small-font-size;
+@button-large-font-size:                        @global-medium-font-size;
+
+@button-padding-horizontal:                     @global-gutter;
+@button-small-padding-horizontal:               @global-small-gutter;
+@button-large-padding-horizontal:               @global-medium-gutter;
+
+@button-default-background:                     @global-muted-background;
+@button-default-color:                          @global-emphasis-color;
+@button-default-hover-background:               darken(@button-default-background, 5%);
+@button-default-hover-color:                    @global-emphasis-color;
+@button-default-active-background:              darken(@button-default-background, 10%);
+@button-default-active-color:                   @global-emphasis-color;
+
+@button-primary-background:                     @global-primary-background;
+@button-primary-color:                          @global-inverse-color;
+@button-primary-hover-background:               darken(@button-primary-background, 5%);
+@button-primary-hover-color:                    @global-inverse-color;
+@button-primary-active-background:              darken(@button-primary-background, 10%);
+@button-primary-active-color:                   @global-inverse-color;
+
+@button-secondary-background:                   @global-secondary-background;
+@button-secondary-color:                        @global-inverse-color;
+@button-secondary-hover-background:             darken(@button-secondary-background, 5%);
+@button-secondary-hover-color:                  @global-inverse-color;
+@button-secondary-active-background:            darken(@button-secondary-background, 10%);
+@button-secondary-active-color:                 @global-inverse-color;
+
+@button-danger-background:                      @global-danger-background;
+@button-danger-color:                           @global-inverse-color;
+@button-danger-hover-background:                darken(@button-danger-background, 5%);
+@button-danger-hover-color:                     @global-inverse-color;
+@button-danger-active-background:               darken(@button-danger-background, 10%);
+@button-danger-active-color:                    @global-inverse-color;
+
+@button-disabled-background:                    @global-muted-background;
+@button-disabled-color:                         @global-muted-color;
+
+@button-text-line-height:                       @global-line-height;
+@button-text-color:                             @global-muted-color;
+@button-text-hover-color:                       @global-color;
+@button-text-disabled-color:                    @global-muted-color;
+
+@button-link-line-height:                       @global-line-height;
+@button-link-color:                             @global-link-color;
+@button-link-hover-color:                       @global-link-hover-color;
+@button-link-hover-text-decoration:             underline;
+@button-link-disabled-color:                    @global-muted-color;
+
+
+
+// M I S C
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//
+// Tooltips
+//
+
+@tooltip-max-width:                             200px;
+@tooltip-padding-vertical:                      10px;
+@tooltip-padding-horizontal:                    10px;
+@tooltip-background:                            @w;
+@tooltip-border-radius:                         3px;
+@tooltip-color:                                 @global-color;
+@tooltip-font-size:                             @global-small-font-size;
+@tooltip-margin:                                10px;
+
+//
+// Height
+//
+
+@height-small-height:                           150px;
+@height-medium-height:                          450px;
+@height-large-height:                           600px;
+
+//
+// Inverse aka uk-light
+//
+
+@inverse-global-color-mode:                     light;
+
+@inverse-global-color:                          fade(@global-inverse-color, 100%);
+@inverse-global-emphasis-color:                 @global-inverse-color;
+@inverse-global-muted-color:                    fade(@global-inverse-color, 100%);
+@inverse-global-inverse-color:                  @global-color;
+
+@inverse-global-primary-background:             @global-inverse-color;
+@inverse-global-muted-background:               fade(@global-inverse-color, 10%);
+
+@inverse-global-border:                         fade(@global-inverse-color, 20%);
+
+//
+// Notification
+//
+
+@notification-position:                         10px;
+@notification-z-index:                          @global-z-index + 40;
+@notification-width:                            350px;
+
+@notification-message-margin-bottom:            10px;
+@notification-message-padding:                  @global-small-gutter;
+@notification-message-background:               @global-muted-background;
+@notification-message-color:                    @global-color;
+@notification-message-font-size:                @global-medium-font-size;
+@notification-message-line-height:              1.4;
+
+@notification-close-top:                        @notification-message-padding + 5px;
+@notification-close-right:                      @notification-message-padding;
+
+//
+// Table
+//
+
+@table-margin-vertical:                         @global-margin;
+
+@table-cell-padding-vertical:                   16px;
+@table-cell-padding-horizontal:                 12px;
+
+@table-header-cell-font-size:                   @global-font-size;
+@table-header-cell-font-weight:                 bold;
+@table-header-cell-color:                       @global-color;
+
+@table-footer-font-size:                        @global-small-font-size;
+
+@table-caption-font-size:                       @global-small-font-size;
+@table-caption-color:                           @global-muted-color;
+
+@table-row-active-background:                   #ffd;
+
+@table-divider-border-width:                    @global-border-width;
+@table-divider-border:                          @global-border;
+
+@table-striped-row-background:                  @global-muted-background;
+
+@table-hover-row-background:                    @table-row-active-background;
+
+@table-small-cell-padding-vertical:             10px;
+@table-small-cell-padding-horizontal:           12px;
+
+@table-large-cell-padding-vertical:             22px;
+@table-large-cell-padding-horizontal:           12px;
+
+@table-expand-min-width:                        150px;
+
+//
+// Overlay
+//
+
+@overlay-padding-horizontal:                    @global-gutter;
+@overlay-padding-vertical:                      @global-gutter;
+
+@overlay-default-background:                    fade(@global-background, 80%);
+
+@overlay-primary-background:                    fade(@global-secondary-background, 80%);
+@overlay-primary-color-mode:                    light;
+
+//
+// Offcanvas
+//
+
+@offcanvas-z-index:                             @global-z-index;
+
+@offcanvas-bar-width:                           270px;
+@offcanvas-bar-padding-vertical:                @global-margin;
+@offcanvas-bar-padding-horizontal:              @global-margin;
+@offcanvas-bar-background:                      @global-secondary-background;
+@offcanvas-bar-color-mode:                      light;
+
+@offcanvas-close-position:                      20px;
+@offcanvas-close-padding:                       5px;
+
+@offcanvas-overlay-background:                  rgba(0,0,0,0.1);
+
+//
+// Subnav
+//
+
+@subnav-margin-horizontal:                      20px;
+
+@subnav-item-color:                             @global-color;
+@subnav-item-hover-color:                       @global-emphasis-color;
+@subnav-item-hover-text-decoration:             none;
+@subnav-item-active-color:                      @global-emphasis-color;

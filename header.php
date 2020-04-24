@@ -1,21 +1,27 @@
 <!DOCTYPE html>
-<html class="uk-height-1-1" <?php language_attributes(); ?>>
-<head>
-  <?php
-    $seo_title = get_field('seo_title', 'option');
-    $seo_desc = get_field('seo_desc', 'option');
-    $seo_keywords = get_field('seo_keywords', 'option');
-    $analytics = get_field('seo_analytics', 'option');
-  ?>
-  <meta charset="UTF-8">
+<html <?php language_attributes(); ?>>
+<head><?php
+    $fn_seo_keywords = get_field('fn_seo_keywords', 'option');
+    $analytics = get_field('fn_seo_analytics', 'option');
+  ?><meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title><?php wp_title( '|', true, 'right' ); ?> <?php echo $seo_title; ?></title>
-  <meta name="description" content="<?php echo $seo_desc; ?>">
-  <meta name="author" content="firmennest">
-  <meta name="keywords" content="<?php echo $seo_keywords; ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?php
+    wp_title(''); ?><?php
+    if ( !function_exists('yoast_breadcrumb') ) {
+      $fn_seo_title = get_field('fn_seo_title', 'option');
+      echo ' ' . $fn_seo_title;
+    }
+  ?></title>
+  <?php if ( !function_exists('yoast_breadcrumb') ) {
+    $fn_seo_desc = get_field('fn_seo_desc', 'option');
+    ?><meta name="description" content="<?php echo $fn_seo_desc; ?>"><?php
+  }
+  ?>
+  <meta name="author" content="firmennest">
+  <meta name="keywords" content="<?php echo $fn_seo_keywords; ?>">
 
-  <!-- Favicon https://realfavicongenerator.net/ -->
+  <?php /***** Favicon https://realfavicongenerator.net/ *****/ ?>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -23,10 +29,11 @@
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#1c497a">
   <meta name="msapplication-TileColor" content="#1c497a">
   <meta name="theme-color" content="#1c497a">
+  <?php
+  
+  wp_head();
 
-  <?php wp_head(); ?>
-
-  <?php if( $analytics ): ?>
+  if( $analytics ): ?>
     <script>
       var gaProperty = '<?php echo $analytics; ?>';
       var disableStr = 'ga-disable-' + gaProperty;
@@ -46,12 +53,11 @@
       ga('create', '<?php echo $analytics; ?>', 'auto');
       ga('set', 'anonymizeIp', true);
       ga('send', 'pageview');
-    </script>
-  <?php endif; ?>
-</head>
+    </script><?php
+  endif;
+?></head>
+<body <?php body_class(); ?>><?php
 
-<body <?php body_class(); ?>>
-
-<?php get_template_part('template/header/top'); ?>
-<?php get_template_part('template/header/center'); ?>
-<?php get_template_part('template/header/bottom'); ?>
+  get_template_part('template/header/top');
+  get_template_part('template/header/center');
+  get_template_part('template/header/bottom');

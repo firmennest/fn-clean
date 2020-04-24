@@ -15,7 +15,7 @@
 @form-disabled-background:                      @global-muted-background;
 @form-disabled-color:                           @global-muted-color;
 
-@form-placeholder-color:                        @grey;
+@form-placeholder-color:                        @darkgrey;
 
 @form-small-height:                             @global-control-small-height;
 @form-small-padding-horizontal:                 8px;
@@ -40,7 +40,7 @@
 @form-select-disabled-icon-color:               @global-muted-color;
 
 @form-radio-size:                               16px;
-@form-radio-margin-top:                         -4px;
+@form-radio-margin-top:                         0px;
 @form-radio-background:                         darken(@global-muted-background, 5%);
 
 @form-radio-checked-background:                 @global-primary-background;
@@ -80,48 +80,53 @@
 .uk-select,
 .uk-textarea {
   border: 1px solid @lightgrey;
-}
+  transition: box-shadow 300ms linear;
 
-// Acceptance & Checkbox
-
-.wpcf7-acceptance, .wpcf7-checkbox {
-  position: relative;
-  padding-left: 30px;
-  display: block;
-  margin-bottom: 5px;
-  label, span.wpcf7-list-item-label {
-    font-size: 17px;
-    display: block;
-    line-height: 1.6;
-  }
-  input {
-    position: absolute;
-    left: 0;
-    top: 9px;
+  &:focus{
+    box-shadow: 0 0 4px 0 fade(@primary-color, 60%);
+    border: 1px solid @primary-color !important;
+    outline: none;
   }
 }
 
-// Checkbox
-
-.wpcf7-checkbox {
-  input {
-    .uk-checkbox();
-    &:focus {
-      outline: none;
-    }
-    &:checked {
-      .svg-fill(@internal-form-checkbox-image, "#000", @form-radio-checked-icon-color);
-    }
-    &:checked:focus, .uk-checkbox:indeterminate:focus, .uk-radio:checked:focus {
-      background-color: @primary-color;
-    }
+.uk-background-muted{
+  .uk-input,
+  .uk-select,
+  .uk-textarea {
+    border: 1px solid transparent;
+    background-color: @w;
+  }
+  input[type=checkbox], input[type=radio]{
+    background-color: @w;
   }
 }
+
+// Acceptance
+
+.wpcf7-acceptance{
+  padding: 15px 0;
+  .uk-checkbox{
+    height: 20px;
+    width: 20px;
+    &:checked{
+      background-color: @primary-color !important;
+    }
+  }
+  a{
+    color: @primary-color;
+    text-decoration: underline;
+  }
+}
+
 
 // Submit Button
 
 .wpcf7-submit {
   appearance: none;
+  .uk-button;
+  .uk-button-primary;
+  .uk-display-block;
+  width: 100%;
 }
 
 // CF7 Overrides
@@ -129,10 +134,77 @@
 .wpcf7 {
   position: relative;
 
+  // Fields
+
+  input,select,textarea{
+    outline: none;
+  }
+  .wpcf7-form-control-wrap{
+    > input:not([type=checkbox]):not([type=radio]){
+      .uk-input;
+    }
+    > select{
+      .uk-select;
+      &:not([multiple]):not([size]) {
+          height: @form-height;
+          vertical-align: middle;
+          /* 1 */
+          display: inline-block;
+          .hook-form-single-line;
+      }
+    }
+  }
+
+  .wpcf7-textarea{
+    .uk-textarea;
+  }
+
+  // Checkbox & Radio
+
+  .wpcf7-checkbox {
+    input{
+      .uk-checkbox();
+      &:focus {
+        outline: none;
+      }
+      &:checked, &.uk-checkbox:checked {
+        .svg-fill(@internal-form-checkbox-image, "#000", @form-radio-checked-icon-color);
+        background-color: @primary-color !important;
+      }
+    }
+  }
+  .wpcf7-radio {
+    input{
+      .uk-radio();
+      &:focus {
+        outline: none;
+      }
+      &:checked, &.uk-radio:checked {
+        .svg-fill(@internal-form-radio-image, "#000", @form-radio-checked-icon-color);
+        background-color: @primary-color !important;
+      }
+    }
+  }
+
   // Inline-Lists
 
-  .wpcf7-list-item:first-child {
-    margin-left: 0;
+  .wpcf7-form-control-wrap{
+    .wpcf7-form-control{
+      display: block;
+      .wpcf7-list-item{
+        display: block;
+        position: relative;
+        padding: 5px 0;
+        > input[type="checkbox"], label > input[type="checkbox"]{
+          position: absolute;
+          left: 0;
+          top: 10px;
+        }
+        .wpcf7-list-item-label{
+          padding-left: 25px;
+        }
+      }
+    }
   }
 
   // Validierung
@@ -141,8 +213,13 @@
     display: none;
   }
 
-  .wpcf7-not-valid {
-    border-color: @alert-danger-color;
+  .wpcf7-not-valid:not(span){
+    border: 1px solid @alert-danger-color;
+    background-color: lighten(@form-danger-color, 30%);
+  }
+  .wpcf7-form-control.wpcf7-not-valid input{
+    border: 1px solid @alert-danger-color;
+    background-color: lighten(@form-danger-color, 30%);
   }
 
   // Alert
@@ -167,12 +244,15 @@
   // AJAX Loader
 
   .ajax-loader {
+    visibility: hidden;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
     position: absolute;
-    right: 11px;
-    bottom: 11px;
-    background-image: none !important;
-    width: 20px !important;
-    height: 20px !important;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%;);
+
     &:after {
       content: @fa-var-spinner-third;
       .far;
@@ -191,6 +271,24 @@
         -webkit-transform: rotate(360deg);
                 transform: rotate(360deg); }
     }
+    &.is-active{
+      visibility: visible;
+    }
+  }
+
+  .screen-reader-response{
+    position: absolute;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    width: 1px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .wpcf7-display-none {
+    display: none;
   }
 
 }

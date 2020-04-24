@@ -7,12 +7,12 @@
 function example_post_type() {
 
   $labels = array(
-    'name'                  => _x( 'Example', 'Post Type General Name', 'text_domain' ),
-    'singular_name'         => _x( 'Example', 'Post Type Singular Name', 'text_domain' ),
+    'name'                  => _x( 'Example', 'Post Type General Name', 'fn-theme' ),
+    'singular_name'         => _x( 'Example', 'Post Type Singular Name', 'fn-theme' ),
   );
   $args = array(
-    'label'                 => __( 'Example', 'text_domain' ),
-    'description'           => __( 'Example', 'text_domain' ),
+    'label'                 => __( 'Example', 'fn-theme' ),
+    'description'           => __( 'Example', 'fn-theme' ),
     'labels'                => $labels,
     'supports'              => array( 'title', 'editor','thumbnail' ),
     'hierarchical'          => true,
@@ -25,7 +25,7 @@ function example_post_type() {
     'show_in_nav_menus'     => false,
     'can_export'            => true,
     'has_archive'           => true,
-    'exclude_from_search'   => false,  
+    'exclude_from_search'   => false,
     'publicly_queryable'    => true,
     'query_var'             => 'example',
     'capability_type'       => 'page',

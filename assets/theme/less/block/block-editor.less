@@ -1,0 +1,25 @@
+@import (reference) "../../framework/uikit-3.2.0/less/uikit.less";
+
+@import "../theme/variables.less";
+@import (reference) "../theme/base.less";
+
+@import (reference) "../fontawesome/fontawesome.less";
+@import (reference) "../fontawesome/light.less";
+@import (reference) "../fontawesome/regular.less";
+@import (reference) "../fontawesome/solid.less";
+@import (reference) "../fontawesome/brands.less";
+
+.editor-styles-wrapper{
+  .wp-block{
+    max-width: 100%;
+
+    //ADD Styles here
+
+    
+  }
+  .block-editor-writing-flow .block-editor-writing-flow__click-redirect:last-child{
+    background-color: @primary-color;
+    height: 10px !important;
+    min-height: 10px !important;
+  }
+}
