@@ -1,6 +1,6 @@
 <?php
 
-function add_theme_assets() {
+function fn_add_theme_assets() {
   if ( !is_admin() ) {
 
     // CSS Files
@@ -14,7 +14,7 @@ function add_theme_assets() {
 
   }
 }
-add_action( 'wp_enqueue_scripts', 'add_theme_assets' );
+add_action( 'wp_enqueue_scripts', 'fn_add_theme_assets' );
 
 add_action('wp_print_styles', 'fn_dequeue_styles', 100);
 function fn_dequeue_styles() {
