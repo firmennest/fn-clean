@@ -30,11 +30,11 @@
   <meta name="msapplication-TileColor" content="#1c497a">
   <meta name="theme-color" content="#1c497a">
   <?php
-  
+
   wp_head();
 
-  if( $analytics ): ?>
-    <script>
+  if( $analytics ):
+    ?><script>
       var gaProperty = '<?php echo $analytics; ?>';
       var disableStr = 'ga-disable-' + gaProperty;
       if (document.cookie.indexOf(disableStr + '=true') > -1) {

@@ -8,10 +8,7 @@ function fn_option_logo()
   ob_start();
 
   $logo = get_field('fn_company_logo', 'option');
-  $logo_src = wp_get_attachment_image_src( $logo , '' );
-  $logo_url = $logo_src[0];
-
-  echo '<img src="' . $logo_url . '" alt="">';
+  echo wp_get_attachment_image( $logo , 'full' );
 
   return ob_get_clean();
 }

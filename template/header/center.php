@@ -4,7 +4,7 @@
   <div class="uk-container">
       <div uk-grid class="uk-flex uk-flex-middle">
         <div class="uk-width-2-3 uk-width-1-4@m logo">
-          <a href="<?php bloginfo('url'); ?>"><?php
+          <a class="uk-display-inline-block" href="<?php bloginfo('url'); ?>"><?php
             echo do_shortcode('[logo]');
           ?></a>
         </div>
