@@ -23,9 +23,8 @@
               </div>
             </div>
           </div>
-        </div><?php
-      }
-      ?><script>
+        </div>
+        <script>
         function fn_setCookie() {
           var d = new Date();
           d.setTime(d.getTime() + (90*24*60*60*1000));
@@ -35,18 +34,20 @@
           jQuery('body').css('padding-bottom', '0px');
         }
         jQuery(document).ready(function($){
-           if (fnGetCookie("fn-cookie-notice") != 'cookie-success') {
-             jQuery('#fn-cookie-notice').slideToggle('fast', function(){
-               $('body').css('padding-bottom',$('#fn-cookie-notice').outerHeight());
-             });
-             $(window).resize(function(){
-               setTimeout(function(){
-                 $('body').css('padding-bottom',$('#fn-cookie-notice').outerHeight());
-               }, 200);
-             });
-           }
+          if (fnGetCookie("fn-cookie-notice") != 'cookie-success') {
+            jQuery('#fn-cookie-notice').slideToggle('fast', function(){
+              $('body').css('padding-bottom',$('#fn-cookie-notice').outerHeight());
+            });
+            $(window).resize(function(){
+              if(!jQuery('#fn-cookie-notice').is(':visible')) return;
+              setTimeout(function(){
+                $('body').css('padding-bottom',$('#fn-cookie-notice').outerHeight());
+              }, 200);
+            });
+          }
         });
-      </script><?php
+        </script><?php
+      }
     endif;
 
   ?></body>

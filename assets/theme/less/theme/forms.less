@@ -201,6 +201,7 @@
           top: 10px;
         }
         .wpcf7-list-item-label{
+          display: block;
           padding-left: 25px;
         }
       }
@@ -214,12 +215,12 @@
   }
 
   .wpcf7-not-valid:not(span){
-    border: 1px solid @alert-danger-color;
-    background-color: lighten(@form-danger-color, 30%);
+    border: 1px solid @alert-danger-color !important;
+    background-color: lighten(@form-danger-color, 30%) !important;
   }
   .wpcf7-form-control.wpcf7-not-valid input{
-    border: 1px solid @alert-danger-color;
-    background-color: lighten(@form-danger-color, 30%);
+    border: 1px solid @alert-danger-color !important;
+    background-color: lighten(@form-danger-color, 30%) !important;
   }
 
   // Alert
