@@ -33,7 +33,7 @@ add_action( 'get_footer', 'fn_add_footer_styles' );
 
 
 function fn_add_async_attribute($tag, $handle) {
-   $scripts_to_async = array('theme-js');
+   $scripts_to_async = array('base-js');
    foreach($scripts_to_async as $async_script) {
       if ($async_script === $handle) {
          return str_replace(' src', ' async="async" src', $tag);
