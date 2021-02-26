@@ -3,6 +3,11 @@ firmennest base template
 
 # Version History
 
+__1.5.1 Feb 26, 2021__<br>
+- uikit update to 3.6.17
+- better cf7 compatibility
+- siteorigin custom widget compatibility
+
 __1.5.0 Apr 24, 2020__<br>
 - workflow update + cleanup in index, archive & single.php + better standard styling
 - added sidebar.php

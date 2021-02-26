@@ -225,12 +225,18 @@
 
   // Alert
 
+  form.init,
+  form.resetting,
+  form.submitting{
+    .wpcf7-response-output{
+      display: none;
+    }
+  }
+
   .wpcf7-response-output {
     .uk-alert();
-    font-size: 14px;
-    padding: 13px 29px 9px 15px;
-    margin: 15px 0 0 0;
-    display: none;
+    font-size: @global-small-font-size;
+    margin: @global-margin 0 0 0;
   }
 
   .wpcf7-validation-errors {
@@ -242,6 +248,7 @@
     .uk-alert-success();
     border: none;
   }
+
   .wpcf7-form{
     &.invalid .wpcf7-response-output{
       .uk-alert-danger();
@@ -287,6 +294,9 @@
     &.is-active{
       visibility: visible;
     }
+  }
+  form.submitting .ajax-loader{
+    visibility: visible;
   }
 
   .screen-reader-response{

@@ -22,3 +22,6 @@ require_once('content.php');
 
 /** Comments **/
 require_once('comments.php');
+
+/** SiteOrigin Compatibility **/
+if (class_exists('SiteOrigin_Widgets_Bundle')) require_once('so-compat.php');
